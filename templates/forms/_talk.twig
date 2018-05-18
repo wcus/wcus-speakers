@@ -59,6 +59,7 @@
             <p class="help-block">Talk additional information can be written using <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a> to support links</p>
         </div>
     </div>
+{#
     <div class="form-group">
         <label for="form-sponsor" class="col-sm-2 control-label">Company Sponsorship</label>
         <div class="col-sm-10">
@@ -69,16 +70,25 @@
             </div>
         </div>
     </div>
+#}
+    
     <div class="form-group">
         <label for="form-desired" class="col-sm-2 control-label">Most Desired</label>
         <div class="col-sm-10">
             <div class="checkbox">
                 <label for="form-desired">
-                    <input id="form-desired" name="desired" type="checkbox" value="1" {% if desired == '1' %}checked{% endif %}> Of your submissions, is this your best?
+                    <input id="form-desired" name="desired" type="checkbox" value="1" {% if desired == '1' %}checked{% endif %}> Out of your three maximum submissions, is this one your favorite?
                 </label>
             </div>
         </div>
     </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <p style="font-size: 12px;font-weight: 600;"><em>By submitting your talk, you agree to sign and return the <a href="https://2017.us.wordcamp.org/files/2017/04/WordCamp-AV-Release.pdf" target="_blank" title="WCUS AV Release">AV Release form</a> & speaker agreement, and agree to our <a href="https://2017.us.wordcamp.org/code-of-conduct/" target="_blank" title="WCUS Code of Conduct">Code of Conduct</a>.</em></p>
+        </div>
+    </div>
+    
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-success">{{ buttonInfo }}</button>

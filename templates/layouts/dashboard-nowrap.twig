@@ -11,7 +11,9 @@
     </head>
     <body class="dashboard">
         <div class="navbar navbar-opencfp navbar-fixed-top section--full" role="navigation">
-            <a href="{{ url('homepage') }}" class="logo pull-left"><img data-src="/assets/img/logo.svg" class="svg-inject" alt="Open CFP"></a>
+            <a href="{{ url('homepage') }}" class="logo pull-left">
+                <img data-src="/assets/img/WordCampUS-Logo_Below-White.svg" class="svg-inject" alt="WordCamp US 2018">
+            </a>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -32,7 +34,7 @@
                             {% endif %}
                             <li><a href="{{ url('logout') }}">Logout</a></li>
                         {% else %}
-                            <li><a href="{{ url('login') }}">Login</a></li>
+                            <li><a href="{{ url('login') }}">Login/Register</a></li>
                         {% endif %}
                     </ul>
                 {% endblock %}

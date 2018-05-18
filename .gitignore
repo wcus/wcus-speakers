@@ -21,3 +21,5 @@ deployment.xml
 /web/.htaccess
 phinx.yml
 /phpunit.xml
+/web/.well-known
+/templates\ copy/

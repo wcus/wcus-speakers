@@ -40,4 +40,11 @@ class CallForProposal
 
         return $currentTime < $this->endDate;
     }
+    
+    public function callForProposalDateCheck() {
+	    
+	    $return = $this->endDate->format('Y-m-d H:i:s');
+	    
+	    return $return;
+    }
 }

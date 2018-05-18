@@ -1,3 +1,4 @@
+/* Instead of inspecting the code, how about submitting a talk? Maybe about what you learned inspecting code? */
 body {
   background: #FFF;
   font-family: "Source Sans Pro", sans-serif;
@@ -452,4 +453,13 @@ a:hover {
 .icon-12 {
   height: 12px;
   width: 12px;
+}
+.navbar .logo svg{
+	height: 65px;
+}
+.module--constrained{
+	width: 100%;
+}
+.dashboard .container{
+	margin-top: 20px;
 }

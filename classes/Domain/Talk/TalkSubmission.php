@@ -115,6 +115,30 @@ class TalkSubmission
 
     private function isValidCategory($category)
     {
+	    return in_array($category, [
+		   'diversity',
+		   'javascript’,
+		   ‘business’,
+		   ‘mentalhealth’,
+		   ‘bestpractices’,
+		   'contributing',
+		   ‘accessability’,
+		   ‘security’,
+		   ‘mobile’,
+		   ‘testing’,
+		   ‘versioncontrol’,
+		   ‘ux’,
+		   ‘translations’,
+		   ‘restapi’,
+		   ‘devops’,
+		   ‘media’,
+		   ‘projectmanagement’,
+		   ‘workflows’,
+		   ‘uiuxpractices’,
+		   ‘community’,
+		   ‘opensource,
+	    ]);
+/*
         return in_array($category, [
             'development',
             'framework',
@@ -129,5 +153,6 @@ class TalkSubmission
             'continuousdelivery',
             'ibmi',
         ]);
+*/
     }
 }

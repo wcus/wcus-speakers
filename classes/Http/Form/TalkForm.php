@@ -17,7 +17,7 @@ class TalkForm extends Form
         'desired',
         'slides',
         'other',
-        'sponsor',
+		'sponsor',
         'user_id',
     ];
 
@@ -63,6 +63,7 @@ class TalkForm extends Form
             $this->validateDesired() &&
             $this->validateSlides() &&
             $this->validateOther() &&
+//             $this->validateRelease() &&
             $this->validateSponsor()
         );
     }
@@ -181,7 +182,12 @@ class TalkForm extends Form
     {
         return true;
     }
-
+	
+	public function validateRelease()
+    {
+        return true;
+    }
+	
     public function validateSponsor()
     {
         return true;
