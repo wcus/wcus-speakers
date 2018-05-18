@@ -1,37 +1,41 @@
 {% extends "layouts/default.twig" %}
 {% block content %}
-<div class="container">
-    <h2>Call for Papers Talk Ideas</h2>
-    <p>
-        {{ site.title }} is not limited to just PHP-related talks. There have been
-        sessions covering a wide range of topics supporting PHP developers and DevOps
-        as well, and we encourage you to "think outside the box" to come up with your
-        own unique topics.
-    </p>
-    <p>
-        Due to financial constraints most conferences tend to pick speakers to present
-        multiple talks. Therefore <strong>it is advisable to submit a few talk ideas, not just one.</strong>
-        By submitting a single talk you may lessen your chances of being selected.
-    </p>
-    <p>
-        To get the ideas flowing, here's a few suggestions:
-    </p>
+<div class="page-content">
+    <h2 class="page-title">Session Recommendations</h2>
+    <p>This year we are recommending a different, and what we hope to be a fun, way to think about your submissions. We know that the WordPress community is filled with so many diverse, interesting people, and it would be a fault on our part if we didn’t take advantage of that! So hear us out, this is what we are suggesting.</p>
+
+    <h3>Full-length talks, WordPress focused</h3>
+    <p>Your first submission could be WordPress-focused, with a goal to teach someone something they didn’t know when they came to WordCamp U.S. We want to create programming in such a way that attendees will walk away raving about how much they learned at WordCamp U.S. With this type of feedback, we can ensure that WordPress-focused companies can see the value of sending more employees to WordCamp U.S. in the future. These submissions should be submitted as regular session length.</p>
+
+    <p>We welcome topics on the below areas that overlap many areas like development, content, and design, etc. but we are not limiting topics to these areas:</p>
     <ul>
-        <li>Virtualization and environments</li>
-        <li>Javascript</li>
-        <li>Alternate PHP run-times</li>
-        <li>PHP internals</li>
-        <li>Development principles</li>
+        <li>Accessibility </li>
+        <li>Best Practices</li>
+        <li>Collaboration</li>
+        <li>Diversity and Inclusion</li>
+        <li>Mental Health</li>
+        <li>New Discoveries </li>
+        <li>Overcoming Obstacles</li>
+        <li>Open Source Communities</li>
+        <li>Professional Development</li>  
+        <li>Privacy</li>
         <li>Security</li>
-        <li>Mobile-first design</li>
-        <li>Testing (unit, functional, etc.)</li>
-        <li>Version control</li>
-        <li>User Experience/Usability</li>
-        <li>Building APIs (REST, SOAP, whatever)</li>
-        <li>Continuous Integration</li>
-        <li>Framework-related topics</li>
-        <li>Professional development</li>
+        <li>Success Stories</li>
     </ul>
+
+    <h3>Lightning length, skills mastery focused</h3>
+    <p>Your second submission could be creative and different than what you might normally submit to a WordCamp. We are all unique and we all do things a little differently. Share something with us that you have mastered in your life. It could be WordPress related or it could be completely off-the-topic of WordPress, but the skills you learned could be applied to the WordPress world. For example, one of our team members enjoys shooting archery, and although she would love to teach folks how to shoot, she could instead teach people about the tactics of being a successful archer. Things like taking your time, ensuring 100% accuracy, and considering your hurdles like wind and distance. Although these are specific examples for archery, these examples can relate to solving other real-life problems, and problems we face in WordPress. These submissions should be submitted as a lightning session length.</p>
+    <p>Now, remember, these are just suggestions. You have two submission slots, and you may divide your submissions however you would like: two lightnings, two full-lengths, one of each. Please be advised if you submit more than two items, we will only consider the first two.</p>
+
+    <h3>WCUS Programming Office Hours</h3>
+    <p>Because ensuring that we have a diverse group of speakers and a variety of great topics is important, we are going to be hosting Office Hours during the open Call for Speakers timeline to ensure that we can answer your questions and help eliminate any barriers you may have to be able to submit. Office hours will take place in the WordPress slack in the #WCUS channel. If interested, please mark your calendars with one of the following blocks of time:</p>
+
+    <ul>
+        <li>Wednesday, March 20th, 1pm – 2pm (UTC -6) / 7pm – 8pm (UTC)</li>
+        <li>Tuesday, March 26th, 10am – 11pm (UTC -6) / 4pm – 5pm (UTC)</li>
+        <li>Thursday, April 4th, 7pm – 8pm (UTC -6) / 1am – 2am (UTC)</li>
+    </ul>
+
+    {% include "_call-submit.twig" %}
 </div>
 {% endblock %}
-

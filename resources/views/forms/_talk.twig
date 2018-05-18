@@ -5,55 +5,52 @@
         <input name="id" type="hidden" value="{{ id }}">
     {% endif %}
 
-    <div class="flex">
-        <div class="mr-4 w-3/5">
-            <label for="form-talk-title"><span class="text-red-dark font-bold" title="Required Field">*</span> Talk Title</label>
-            <input id="form-talk-title" type="text" name="title" placeholder="Talk Title" value="{{ title }}" maxlength="100" required>
+    <label for="form-talk-title"><span class="text-red-dark font-bold" title="Required Field">*</span> Talk Title</label>
+    <input id="form-talk-title" type="text" name="title" placeholder="Talk Title" value="{{ title }}" maxlength="100" required>
 
-            <label for="form-talk-description"><span class="text-red-dark font-bold" title="Required Field">*</span> Description/Abstract</label>
-            <textarea id="form-talk-description" name="description" placeholder="Give a description of your talk (Abstract)" rows="10" required>{{ description }}</textarea>
-            <p class="text-xs text-em mb-2 text-dark-soft">Speaker abstract can be written using <a href="https://daringfireball.net/projects/markdown/basics" target="_blank" rel="noopener noreferrer">markdown</a> to support links</p>
+    <label for="form-talk-description"><span class="text-red-dark font-bold" title="Required Field">*</span> Description/Abstract</label>
+    <textarea id="form-talk-description" name="description" placeholder="Give a description of your talk (Abstract)" rows="10" required aria-describedby="form-talk-description-help">{{ description }}</textarea>
+    <p id="form-talk-description-help">Speaker abstract can be written using <a href="https://daringfireball.net/projects/markdown/basics" target="_blank" rel="noopener noreferrer">markdown</a> to support links.</p>
 
-            <label for="form-talk-other">Additional Talk Information</label>
-            <textarea id="form-talk-other" name="other" placeholder="Other Considerations, such as Joind.In, Lanyrd, local user group, etc." rows="10">{{ other }}</textarea>
-            <p class="text-xs text-em mb-2 text-dark-soft">Talk additional information can be written using <a href="https://daringfireball.net/projects/markdown/basics" target="_blank" rel="noopener noreferrer">markdown</a> to support links</p>
-        </div>
-        <div class="w-2/5">
-            <label for="form-talk-slides">Slides</label>
-            <input id="form-talk-slides" type="text" name="slides" placeholder="Slides URL (if exists)" value="{{ slides }}">
+    <label for="form-talk-other">Additional Talk Information</label>
+    <textarea id="form-talk-other" name="other" placeholder="Other Considerations, such as Joind.In, Lanyrd, local user group, etc." rows="10" aria-describedby="form-talk-other-help">{{ other }}</textarea>
+    <p id="form-talk-other-help">Talk additional information can be written using <a href="https://daringfireball.net/projects/markdown/basics" target="_blank" rel="noopener noreferrer">markdown</a> to support links.</p>
 
-            <label for="form-talk-type">Talk Type</label>
-            <select id="form-talk-type" name="type">
-                {% for typeKey, displayType in talkTypes %}
-                    <option value="{{ typeKey }}" {% if type == typeKey %}selected {% endif %}>{{ displayType }}</option>
-                {% endfor %}
-            </select>
+    <label for="form-talk-slides">Slides</label>
+    <input id="form-talk-slides" type="text" name="slides" placeholder="Slides URL (if exists)" value="{{ slides }}">
 
-            <label for="form-talk-category">Talk Category</label>
-            <select id="form-talk-category" name="category">
-                {% for categoryKey, displayCategory in talkCategories %}
-                    <option value="{{ categoryKey }}" {% if category == categoryKey %}selected {% endif %}>{{ displayCategory }}</option>
-                {% endfor %}
-            </select>
+    <label for="form-talk-type">Talk Type</label>
+    <select id="form-talk-type" name="type">
+        {% for typeKey, displayType in talkTypes %}
+            <option value="{{ typeKey }}" {% if type == typeKey %}selected {% endif %}>{{ displayType }}</option>
+        {% endfor %}
+    </select>
 
-            <label for="form-talk-level">Talk Level</label>
-            <select id="form-talk-level" name="level">
-                {% for levelKey, displayLevel in talkLevels %}
-                    <option value="{{ levelKey }}" {% if level == levelKey %}selected {% endif %}>{{ displayLevel }}</option>
-                {% endfor %}
-            </select>
+    <label for="form-talk-category">Talk Category</label>
+    <select id="form-talk-category" name="category">
+        {% for categoryKey, displayCategory in talkCategories %}
+            <option value="{{ categoryKey }}" {% if category == categoryKey %}selected {% endif %}>{{ displayCategory }}</option>
+        {% endfor %}
+    </select>
 
-            <div class="my-1">
-                <input id="form-sponsor" name="sponsor" type="checkbox" value="1" {% if sponsor == '1' %}checked{% endif %}> <label for="form-sponsor" class="text-dark text-base">Is your company sponsoring, or would they like to?</label><br>
-            </div>
-            <div class="my-1">
-                <input id="form-desired" name="desired" type="checkbox" value="1" {% if desired == '1' %}checked{% endif %}> <label for="form-desired" class="text-dark text-base">Of your submissions, is this your best?</label>
-            </div>
-        </div>
-    </div>
+    <label for="form-talk-level">Talk Level</label>
+    <select id="form-talk-level" name="level">
+        {% for levelKey, displayLevel in talkLevels %}
+            <option value="{{ levelKey }}" {% if level == levelKey %}selected {% endif %}>{{ displayLevel }}</option>
+        {% endfor %}
+    </select>
 
+    <p>
+        <input id="form-desired" name="desired" type="checkbox" value="1" {% if desired == '1' %}checked{% endif %}>
+        <label for="form-desired">Of your two maximum submissions, is this one your best?</label>
+    </p>
 
+    <p>
+        <input id="form-release" name="sponsor" type="checkbox" value="1" {% if sponsor == '1' %}checked{% endif %} required>
+        <label for="form-release">By submitting your talk, you agree to sign and return the <a href="https://2019.us.wordcamp.org/files/2019/03/AV-Agreement-WCUS-2019.pdf" target="_blank">AV Release form</a> & speaker agreement, and agree to our <a href="https://2019.us.wordcamp.org/code-of-conduct/" target="_blank">Code of Conduct</a>. <span class="text-red-dark font-bold" title="Required Field">*</span></label>
+    </p>
 
+    <p>This speaker application is covered by the WordPress.org <a href="https://wordpress.org/about/privacy/" target="_blank">Privacy Policy</a>. If you would like a copy of the information you’ve entered here, please <a href="mailto:support@wordcamp.org?Subject=Request%20WCUS%20Speaker%20Data" target="_top">email support at wordcamp.org.</a></p>
 
-    <button type="submit" class="btn btn-brand">{{ buttonInfo }}</button>
+    <p class="mt-8"><button type="submit" class="btn btn-brand">{{ buttonInfo }}</button></p>
 </form>

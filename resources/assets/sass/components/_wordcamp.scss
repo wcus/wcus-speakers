@@ -1,0 +1,45 @@
+/**
+ * --------------------------------------------------------------------
+ * Responsive
+ * --------------------------------------------------------------------
+ */
+
+.margin-right {
+  margin-right: 1em;
+}
+
+.wcus-margin-top {
+  margin-top: 1em;
+}
+
+.wcus-tablet-padding {
+  @media #{$tablet-landscape-down} {
+    padding: 0 2rem;
+  }
+}
+
+.wcus-mobile-padding {
+  @media #{$phone-only} {
+    padding: 0 2rem;
+  }
+}
+
+.wcus-full-width-tablet {
+  @media #{$tablet-landscape-down} {
+    flex-wrap: wrap;
+
+    > *:not(a) {
+      width: 100%;
+    }
+  }
+}
+
+.wcus-full-width-mobile {
+  @media #{$phone-only} {
+    flex-wrap: wrap;
+
+    > *:not(a) {
+      width: 100%;
+    }
+  }
+}

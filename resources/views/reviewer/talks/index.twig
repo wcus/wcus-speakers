@@ -5,8 +5,8 @@
         <input type="hidden" name="order_by" value="{{ order_by }}">
         <input type="hidden" name="sort" value="{{ sort }}">
 
-        <div class="flex justify-between items-center">
-            <div class="flex items-center">
+        <div class="flex justify-between items-center wcus-full-width-tablet">
+            <div class="flex items-center wcus-full-width-tablet">
                 <div class="mr-4">
                     <label>Per Page:</label>
                     <select name="per_page" class="form-control">
@@ -59,7 +59,7 @@
 
     {% if talks is not empty %}
         {% for talk in talks %}
-            <div id="talk-{{ talk.id }}" class="flex items-center justify-between mb-8">
+            <div id="talk-{{ talk.id }}" class="flex items-center justify-between mb-8 wcus-full-width-mobile">
                 <div class="w-5/6">
                     <h3 class="m-0"><a class="hover:text-brand" href="{{ url('reviewer_talk_view', { id: talk.id }) }}">{{ talk.title|raw }}</a>{% if not site.anonymized_reviews %}<span class="text-sm text-grey-dark"> &mdash; {{ talk.speaker.name }}</span>{% endif %}</h3>
                     <p class="text-sm text-dark-soft mb-3">{{ talk.description | truncate(200) }}</p>

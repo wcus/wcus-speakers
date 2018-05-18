@@ -46,7 +46,11 @@ talk:
     framework: Framework
     ibmi: IBMi
     javascript: JavaScript
-    personal: Personal Skills
+    business: Business
+    mentalhealth: Mental Health
+    bestpractices: Best Practices
+    contributing: Contributing
+    accessibility: Accessibility
     security: Security
     testing: Testing
     uiux: UI/UX

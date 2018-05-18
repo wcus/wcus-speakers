@@ -1,0 +1,3 @@
+{% if user is not defined %}
+<p><a href="{{ url('login') }}">Log in</a> or <a href="{{ url('user_new') }}">register</a> to submit your talk!</p>
+{% endif %}

@@ -3,40 +3,41 @@
     <head>
         <title>{% block title %}{{ site.title }}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700|Nunito:700,800" rel="stylesheet">
         <link href="{{ assets('css/app.css') }}" rel="stylesheet" media="screen">
     </head>
-    <body class="border-t-4 border-brand">
-        <nav class="{% if not active('homepage') %}border-b border-white{% endif %}">
-            <div class="container mx-auto flex justify-between">
-                <a class="font-serif flex items-center" href="{{ url('homepage') }}">
-                    <img class="w-10 mr-2" src="{{ assets('img/logo.svg') }}" alt="OpenCFP">
-                    <h1 class="font-normal m-0">Open<span class="text-brand font-bold">CFP</span></h1>
+    <body class="page {% if not active('homepage') %}page-inner{% endif %}{% if active('dashboard') %}page-dashboard{% endif %}">
+        <div class="container mx-auto site-header flex">
+            <nav role="navigation" aria-label="Speaker Information" class="flex items-center flex-1 info-navigation">
+                <a href="{{ url('speaker_package') }}" class="{% if active('speaker_package') %}active{% endif %}">Speaker Information</a>
+                <a href="{{ url('talk_ideas') }}" class="{% if active('talk_ideas') %}active{% endif %}">Talk Ideas</a>
+            </nav>
+            <h1 class="site-title font-normal m-0">
+                <a href="{{ url('homepage') }}" style="background-image:url('{{ assets('img/logo.svg') }}');">
+                    <span class="screen-reader-text">{{ site.title }}</span>
                 </a>
-                <div class="flex">
-                    <a href="{{ url('homepage') }}" class="mr-8 py-6 {% if active('homepage') %}border-b-4 border-brand{% else %}text-soft{% endif %}">Home</a>
-                    <a href="{{ url('speaker_package') }}" class="mr-8 py-6 {% if active('speaker_package') %}border-b-4 border-brand{% else %}text-soft{% endif %}">Speaker Package</a>
-                    <a href="{{ url('talk_ideas') }}" class="mr-8 py-6 {% if active('talk_ideas') %}border-b-4 border-brand{% else %}text-soft{% endif %}">Talk Ideas</a>
-                    {% if user is defined and user is not empty %}
-                        <a href="{{ url('dashboard') }}" class="mr-8 py-6 {% if active('dashboard') %}border-b-4 border-brand{% else %}text-soft{% endif %}">Dashboard</a>
-                        {% if user_is_admin %}
-                            <a href="{{ url('admin') }}" class="mr-8 py-6 {% if active('admin') %}border-b-4 border-brand{% else %}text-soft{% endif %}">Admin</a>
-                        {% endif %}
-                        {% if user_is_reviewer is defined and user_is_reviewer %}
-                            <a href="{{ url('reviewer') }}" class="mr-8 py-6 {% if active('reviewer') %}border-b-4 border-brand{% else %}text-soft{% endif %}">Reviewer</a>
-                        {% endif %}
-                        <a href="{{ url('logout') }}" class="py-6 text-soft">Logout</a>
-                    {% else %}
-                        <a href="{{ url('login') }}" class="mr-8 py-6 text-soft hover:text-dark">Login</a>
-                        <a href="{{ url('user_new') }}" class="py-6 text-soft @text-dark">Signup</a>
+            </h1>
+            <nav role="navigation" aria-label="Account" class="flex items-center flex-1 account-navigation">
+                {% if user is defined and user is not empty %}
+                    <a href="{{ url('dashboard') }}" class="{% if active('dashboard') %}active{% endif %}">Dashboard</a>
+                    {% if user_is_admin %}
+                        <a href="{{ url('admin') }}" class="{% if active('admin') %}active{% endif %}">Admin</a>
                     {% endif %}
-                </div>
-            </div>
-        </nav>
+                    {% if user_is_reviewer is defined and user_is_reviewer %}
+                        <a href="{{ url('reviewer') }}" class="{% if active('reviewer') %}active{% endif %}">Reviewer</a>
+                    {% endif %}
+                    <a href="{{ url('logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url('login') }}">Login</a>
+                    <a href="{{ url('user_new') }}">Signup</a>
+                {% endif %}
+            </nav>
+        </div>
 
         {% block header %}
         {% endblock %}
 
-        <main class="container mx-auto mt-8 flex">
+        <main class="container mx-auto flex">
             <div class="flex-1 mr-16">{% block sidebar %}{% endblock %}</div>
             <div class="flex-3 w-full">
                 {% include "_flash.twig" %}
