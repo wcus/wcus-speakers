@@ -22,4 +22,4 @@ deployment.xml
 phinx.yml
 /phpunit.xml
 /web/.well-known
-/templates\ copy/
+templates copy/

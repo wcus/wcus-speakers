@@ -94,7 +94,7 @@ function deleteTalk(tid) {
         You currently have no talks submitted.
     {% endif %}
     <p>
-    {% if profile.talks|length < 2 %}
+    {% if profile.talks|length <= 2 %}
     	<a class="btn btn-success" href="{{ url('talk_new') }}">Submit a talk</a>
     {% else %}
     	<a class="btn btn-success" href="#" disabled="disabled">Submit a talk</a>

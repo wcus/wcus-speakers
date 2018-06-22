@@ -57,10 +57,14 @@
                 <li>
                     <a href=""><img data-src="/assets/img/icons/download.svg" alt="Export Talks List" class="svg-inject nav-icon icon-12"> Export</a>
                     <ul>
-                        <li><a href="{{ url('admin_export_csv') }}">Talks List</a></li>
-                        <li><a href="{{ url('admin_export_csv_anon') }}">Anonomised Talks List</a></li>
-                        <li><a href="{{ url('admin_export_csv_selected') }}">Selected Talks List</a></li>
-                        <li><a href="{{ url('admin_export_csv_emails') }}">Acceptance/Rejection List</a></li>
+	                    {% if not site.talk_anon %}
+	                        <li><a href="{{ url('admin_export_csv') }}">Talks List</a></li>
+	                        <li><a href="{{ url('admin_export_csv_anon') }}">Anonomised Talks List</a></li>
+	                        <li><a href="{{ url('admin_export_csv_selected') }}">Selected Talks List</a></li>
+	                        <li><a href="{{ url('admin_export_csv_emails') }}">Acceptance/Rejection List</a></li>
+	                    {% else %}
+	                    	<li><a href="{{ url('admin_export_csv_anon') }}">Anonomised Talks List</a></li>
+	                    {% endif %}
                     </ul>
                 </li>
 

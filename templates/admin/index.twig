@@ -1,6 +1,15 @@
 {% extends "layouts/admin.twig" %}
 {% block content %}
     <h2 class="headline">Admin Dashboard</h2>
+    {% if not site.talk_anon %}
+	    <div style="display:none">
+	    	talk_anon is not true (first)
+	    </div>
+	{% else %}
+		<div style="display:none">
+	    	talk_anon is true
+	    </div>
+	{% endif %}
     <div class="row">
         <div class="col-md-3">
             <div class="tile tile-talks">

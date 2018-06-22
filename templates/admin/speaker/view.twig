@@ -30,9 +30,13 @@
                 {% if talks | length > 0 %}
                     <h3>Talk Submissions</h3>
 
-                    {% for talk in talks %}
-                        <a href="{{ url('admin_talk_view', { id: talk.id }) }}">{{ talk.title }}</a><br />
-                    {% endfor %}
+					{% if site.talk_anon %}
+						<em>Currently in "Anonymous" mode - talk titles not shown.</em>
+                    {% else %}
+                    	{% for talk in talks %}
+                        	<a href="{{ url('admin_talk_view', { id: talk.id }) }}">{{ talk.title }}</a><br />
+	                    {% endfor %}
+					{% endif %}
                 {% endif %}
             </div>
         </div>
