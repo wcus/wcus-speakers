@@ -1,0 +1,88 @@
+application:
+  title: WordCamp US 2019
+  url: http://cfp.dev
+  email: contact@openconf.com
+  eventurl: https://2019.us.wordcamp.org
+  event_location: St. Louis, MO
+  enddate: Nov. 3rd, 2019
+  show_submission_count: false
+  airport: STL
+  arrival: 2019-11-01
+  departure: 2019-11-03
+  secure_ssl: false
+  online_conference: false
+  date_format: m/d/Y
+  date_timezone: "UTC"
+  coc_link: http://confcodeofconduct.com/
+  show_contrib_banner: false
+  venue_image_path: /assets/img/stlouis-mo.jpg
+
+
+database:
+  host: database
+  database: cfp
+  dsn: mysql:dbname=cfp;host=database
+  user: root
+  password: root
+
+log:
+  level: debug
+
+mail:
+  host: ~
+  port: ~
+  username: ~
+  password: ~
+  encryption: ~
+  auth_mode: ~
+
+talk:
+  categories:
+    diversity: Diversity
+    javascript: JavaScript
+    business: Business
+    mentalhealth: Mental Health
+    bestpractices: Best Practices
+    contributing: Contributing
+    accessability: Accessability
+    security: Security
+    mobile: Mobile
+    testing: Testing
+    versioncontrol: Version Control
+    translations: Translations
+    restapi: Rest API
+    devops: Devops
+    media: Media
+    projectmanagement: Project Management
+    workflows: Workflows
+    uiux: UI / UX
+    community: Community
+    opensource: Open Source
+    other: Other
+  levels:
+    entry: Entry level
+    mid: Mid-level
+    advanced: Advanced
+  types:
+    regular: Regular (50 mins)
+    tutorial: Tutorial (3 hrs)
+
+security:
+  firewalls:
+    secured_area:
+      form_forgot:
+        csrf_parameter: _csrf_security_token
+        csrf_token_id: forgot_password
+
+reviewer:
+  users:
+    -
+
+opencfpcentral:
+  sso: off
+  clientId: 0
+  clientSecret: 0
+  authorizeUrl: https://www.opencfpcentral.com/oauth/authorize?
+  redirectUri: http://localhost/sso/redirect
+  resourceUri: https://www.opencfpcentral.com/api/user
+  tokenUrl: https://www.opencfpcentral.com/oauth/token

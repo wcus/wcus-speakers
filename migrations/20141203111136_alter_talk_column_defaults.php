@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2013-2018 OpenCFP
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ *
+ * @see https://github.com/opencfp/opencfp
+ */
 use Phinx\Migration\AbstractMigration;
 
 class AlterTalkColumnDefaults extends AbstractMigration
@@ -10,10 +20,10 @@ class AlterTalkColumnDefaults extends AbstractMigration
     public function up()
     {
         $this->table('talks')
-            ->changeColumn('desired', 'boolean', ['default' => 0])
-            ->changeColumn('favorite', 'boolean', ['default' => 0])
-            ->changeColumn('sponsor', 'boolean', ['default' => 0])
-            ->changeColumn('selected', 'boolean', ['default' => 0])
+            ->changeColumn('desired', 'boolean', ['default' => false])
+            ->changeColumn('favorite', 'boolean', ['default' => false])
+            ->changeColumn('sponsor', 'boolean', ['default' => false])
+            ->changeColumn('selected', 'boolean', ['default' => false])
             ->changeColumn('created_at', 'datetime', ['default' => null])
             ->changeColumn('updated_at', 'datetime', ['default' => null])
             ->save();

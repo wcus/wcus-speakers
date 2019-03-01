@@ -4,37 +4,36 @@ OpenCFP is a PHP-based conference talk submission system.
 
 ---
 [![Build Status](https://travis-ci.org/opencfp/opencfp.svg?branch=master)](https://travis-ci.org/opencfp/opencfp)
-[![Code Climate](https://codeclimate.com/github/opencfp/opencfp/badges/gpa.svg)](https://codeclimate.com/github/opencfp/opencfp)
-[![Test Coverage](https://codeclimate.com/github/opencfp/opencfp/badges/coverage.svg)](https://codeclimate.com/github/opencfp/opencfp)
-[![Issue Count](https://codeclimate.com/github/opencfp/opencfp/badges/issue_count.svg)](https://codeclimate.com/github/opencfp/opencfp)
 
-Current release: v1.0.3
+[![GitHub release](https://img.shields.io/github/release/opencfp/opencfp.svg)](https://github.com/opencfp/opencfp/releases/latest)
 
 ## README Contents
 
  * [Features](#features)
  * [Screenshots](#screenshots)
  * [Contributing](#contributing)
- * [Requirements](#requirements)
+ * [Minimum Requirements](#requirements)
+ * [Privacy Restrictions](#privacy)
  * [Installation](#installation)
+   * [Grab Latest Release](#grab-latest-release)
    * [Cloning the Repository](#cloning-the-repository)
    * [Specify Environment](#specify-environment)
    * [Installing Composer Dependencies](#installing-composer-dependencies)
-   * [PHP Built-in Web Server](#php-built-in-web-server)
+   * [Specify Web Server Document Root](#specify-web-server-document-root)
    * [Create a Database](#create-a-database)
    * [Configure Environment](#configure-environment)
+   * [OpenCFP Central](#opencfp-central)
    * [Run Migrations](#run-migrations)
+   * [Using Vagrant](#using-vagrant)
    * [Final Touches](#final-touches)
- * [JSON API](#json-api)
-   * [Configuration](#json-api-configuration)
-   * [Authorization](#json-api-authorization)
-   * [Endpoints](#json-api-endpoints)
-   * [Using the API](#json-api-usage)
+   * [Building Docker Image](#building-docker-image)
  * [Command-line Utilities](#command-line-utilities)
    * [Admin Group Management](#admin-group-management)
+   * [Reviewer Group Management](#reviewer-group-management)
    * [User Management](#user-management)
    * [Clear Caches](#clear-caches)
    * [Scripts to Rule Them All](#scripts-rule-all)
+ * [Compiling Frontend Assets](#compiling-frontend-assets)
  * [Testing](#testing)
  * [Troubleshooting](#troubleshooting)
 
@@ -45,43 +44,48 @@ Current release: v1.0.3
  * Dashboard that allows speakers to submit talk proposals and manage their profile.
  * Administrative dashboard for reviewing submitted talks and making selections.
  * Command-line utilities for administering the system.
- * JSON-API for selected use-cases. (Coming Soon!)
-
 
 ## [Screenshots](#screenshots)
-![Front page](http://i.imgur.com/GDhX1lD.png)
-![Login screen](http://i.imgur.com/VfNNch9.png)
-![Speaker page](http://i.imgur.com/uw1qmbS.png)
-![Talk page](http://i.imgur.com/pSreRoM.png)
-![Admin area](http://i.imgur.com/1Vmnwbv.png)
-![Admin talk review](http://i.imgur.com/3IRXDMg.png)
-![Admin speaker details](http://i.imgur.com/3oSXzGQ.png)
-![Admin talks dashboard](http://i.imgur.com/6Uu0OZu.png)
+
+You can find screenshots of the application in our [wiki](https://github.com/opencfp/opencfp/wiki/Screenshots)
 
 
 ## [Contributing](#contributing)
 
-We welcome and love contributions! To facilitate receiving updates to OpenCFP, we encourage you to create a new
-personal branch after you fork this repository. This branch should be used for content and changes that are specific
-to your event. However, anything you are willing to push back should be updated in your master branch. This will help
-keep the master branch generic for future event organizers that choose to use the system. You would then be able to
-merge master to your private branch and get updates when desired!
+See [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
 
+## [Minimum Requirements](#requirements)
 
-## [Requirements](#requirements)
-
- * PHP 7.0+
+ * PHP 7.1+
  * Apache 2+ with `mod_rewrite` enabled and an `AllowOverride all` directive in your `<Directory>` block is the recommended web server
  * Composer requirements are listed in [composer.json](composer.json).
  * You may need to install `php7.0-intl` extension for PHP. (`php-intl` on CentOS/RHEL-based distributions)
+ * Either the GD image library or the Imagick PHP extension for the [Intervention image library](http://image.intervention.io/getting_started/installation))
+
+## [Privacy Restrictions](#privacy)
+
+We request that anyone who installs OpenCFP to not share any of the 
+personal information that is collected from users with any third
+parties without explicit permission from users and to also be aware of the existence of the European
+Union's [General Data Protection Regulation](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation)
+as it could potentially impact your ability to accept submissions
+from anyone residing within the European Union.
+
+Tools to make it easier to comply with the GDPR are in the process
+of being created.
+
+We recommend that you delete any data stored in a database associated
+with an OpenCFP instance within 15 months of accepting submissions from
+users.
+
 
 ## [Installation](#installation)
 
-### [Grab Latest Release](#cloning-the-repository)
+### [Grab Latest Release](#grab-latest-release)
 
 It is recommended for you to always install the latest marked release. Go to `https://github.com/opencfp/opencfp/releases` to download it.
 
-### Cloning the Repository
+### [Cloning the Repository](#cloning-the-repository)
 
 Clone this project into your working directory. We recommend always running the `master` branch as it was frequent contributions.
 
@@ -124,25 +128,25 @@ Again, just use your preferred environment in place of `production` if required.
 From the project directory, run the following command. You may need to download `composer.phar` first from http://getcomposer.org
 
 ```bash
-$ script/setup
+$ php composer.phar run setup-env
 ```
 
-### [PHP Built-in Web Server](#php-built-in-web-server)
+If you have composer installed globally you can run:
 
-To run OpenCFP using [PHP's built-in web server](http://php.net/manual/en/features.commandline.webserver.php) the
-following command can be run:
-
-```
-$ script/server
+```bash
+$ composer run setup-env
 ```
 
-The server uses port `8000`. This is a quick way to get started doing development on OpenCFP itself.
+Or you can run
 
+```bash
+$ ./script/setup
+```
 ### [Specify Web Server Document Root](#specify-web-server-document-root)
 
 Set up your desired webserver to point to the `/web` directory.
 
-Apache 2+ Example:
+[Apache 2+](https://httpd.apache.org/) Example:
 
 ```
 <VirtualHost *:80>
@@ -156,7 +160,7 @@ Apache 2+ Example:
 nginx Example:
 
 ```
-server{
+server {
 	server_name cfp.sitename.com;
 	root /var/www/opencfp/web;
 	listen 80;
@@ -174,7 +178,7 @@ server{
 
 		fastcgi_param CFP_ENV production;
 		fastcgi_split_path_info ^(.+\.php)(/.+)$;
-		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_pass unix:/var/run/php71-fpm.sock;
 		fastcgi_read_timeout 150;
 		fastcgi_index index.php;
 		fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -183,6 +187,21 @@ server{
 
 }
 ```
+
+You can use the included `opencfp-nginx.conf.dist` file and modify it as needed.
+
+[Caddy](https://caddyserver.com) example:
+
+```
+localhost:8080
+root /var/www/opencfp/web
+fastcgi / 127.0.0.1:9000 php 
+rewrite / {path} {path}/ /index.php/{path} 
+log access.log
+errors error.log
+```
+
+You can use the included `Caddyfile.dist` file and modify it as needed.
 
 The application does not currently work properly if you use PHP's built-in
 server.
@@ -205,7 +224,7 @@ schema to enter your own details into.
 For example, if you specified `SetEnv CFP_ENV production`:
 
 ```bash
-$ cp config/production.dist.yml config/production.yml
+$ cp config/production.yml.dist config/production.yml
 ```
 
 After making a local copy, edit `config/production.yml` and specify your own details. Here are some important options
@@ -218,6 +237,7 @@ to consider:
 | `secure_ssl`          | This should be enabled, if possible. Requires a valid SSL certificate. |
 | `database.*`          | This is the database information you collected above. |
 | `mail.*`              | This is SMTP configuration for sending mail. The application sends notifications on various system events. |
+| `opencfpcentral.*`    | Settings related to using OpenCFP Central for single-sign-on |
 | `talk.categories.*`   | dbkey: Display Name mapping for your talk categories |
 | `talk.types.*`        | dbkey: Display Name mapping for your talk types |
 | `talk.levels.*`       | dbkey: Display Name mapping for your talk levels |
@@ -234,325 +254,156 @@ mail:
     encryption: tls
     auth_mode: ~
 ```
+### [Running behind a trusted proxy](#run-trusted-proxy)
+
+If you are running OpenCFP behing a proxy server which adds X-Forwarded-For headers (this could be a cloud based load balancer or a service such as Cloudflare) you will need to set the environment variable TRUST_PROXIES to true this will ensure that OpenCFP trusts the headers set by these proxies for the original IP address and ssl mode. Setting this will trust these headers regardless of where the original request originates, so it's advisable to either lock down your instance so that only the trusted proxy can access it or modify the list of trusted proxies in the index.php file to only include the ip addresses of your proxies.
+
+
+### [OpenCFP Central](#opencfp-central)
+
+[OpenCFP Central](https://www.opencfpcentral.com) is a web site created by Chris Hartjes to help both speakers and conference organizers. Conference
+organizers can create an account and get an OAuth2 client ID and client secret, which can be entered into the
+configuration files. With the ID and secret, change the values for `opencfpcentral.sso` to be `on`, and set
+`opencfpcentral.clientId` and `opencfpcentral.clientSecret` to their respective values. 
+
+Any users who create an account at OpenCFP Central can use it to log into any OpenCFP instance that has enabled
+SSO. If you don't already have an account on that instance, one will be created for you.
+
 
 ### [Run Migrations](#run-migrations)
 
-This project uses [Phinx](http://phinx.org) to handle migrations. Be sure to copy the `phinx.yml.dist` file that is in the
-root directory for the project to `phinx.yml` and edit it to match your own database settings.
+This project uses [Phinx](http://phinx.org) to handle migrations. Configuration for Phinx is loaded from [`phinx.php`](phinx.php). 
+The `CFP_ENV` environment variable is used to select an environment to migrate and defaults to `development`. Be sure 
+to correctly configure the app using the `config/:environment.yml` files.
 
 To run migrations, make sure you are in the root directory for the project and run the following:
 
 ```
-$ vendor/bin/phinx migrate --environment=production
+$ CFP_ENV=production vendor/bin/phinx migrate
 ```
 
 Note: For updating previously installed instances only run migrations as needed.
 
+### [Using Vagrant](#using-vagrant)
+
+After running `$ composer run setup-env` (or `$ ./script/setup`) from the project root run `php vendor/bin/homestead make`. 
+This will create a `Homestead.yaml` based on settings from `Homestead.yaml.example`. Do not version control `Homestead.yaml`
+
+Run `vagrant up`
+Add `192.168.10.10 opencfp.test` to your operating system's hosts file (/etc/hosts)
+Point your browser to `http://opencfp.test`
+
+Edit your `config/development.yml` to use Homestead's database & mail settings:
+
+```
+database:
+  host: 127.0.0.1
+  database: cfp
+  dsn: mysql:dbname=cfp;host=127.0.0.1
+  user: homestead
+  password: secret
+
+log:
+  level: debug
+
+mail:
+  host: localhost
+  port: 1025
+  username: ~
+  password: ~
+  encryption: ~
+  auth_mode: ~
+```
+
+Mailhog (local mail catching) can be viewed at http://opencfp.test:8025
+
+For more usage information please see the [Laravel Homestead Docs](http://laravel.com/docs/homestead)
+
 ### [Final Touches](#final-touches)
 
- * The web server must be able to write to the `/web/uploads` directory in order to
+ * The web server must be able to write to the directories:
+    * `/web/uploads`
+    * `/cache/:environment` (e.g. `/cache/production`)
+    * `/log`
  * You may need to alter the `memory_limit` of the web server to allow image processing of head-shots. This is largely
    dictated by the size of the images people upload. Typically 512M works.
  * Customize templates and `/web/assets/css/site.css` to your heart's content.
 
-## [JSON API](#json-api)
+### [Building Docker Image](#building-docker-image)
 
-OpenCFP has a JSON API (not to be confused with the [json-api specification](http://jsonapi.org/)) that can be used by
-third-party applications to take advantage of a set of features on behalf of a user. The API is enabled by default, but
-can be disabled if not needed for your instance of OpenCFP.
+#### What is Docker
 
-### [API Configuration](#json-api-configuration)
+Quoting [OpenSource](https://opensource.com/resources/what-docker):
 
-Configuration for the API is stored under the `api` namespace of your configuration YAML file. Currently, there is only
-one available configuration setting: whether or not the api is `enabled`.
+"[Docker](https://www.docker.com) is a tool designed to make it easier to create, deploy, and run applications by using containers. 
+Containers allow a developer to package up an application with all of the parts it needs, such as libraries and 
+other dependencies, and ship it all out as one package. By doing so, thanks to the container, 
+the developer can rest assured that the application will run on any other Linux machine regardless of any customized 
+settings that machine might have that could differ from the machine used for writing and testing the code."
 
-### [Authorization](#json-api-authorization)
+#### Requirements
 
-In order to use any of the available APIs in order to do work on a OpenCFP user's behalf, an OAuth2 token must be
-provided and must have appropriate OAuth2 scope(s) associated with it. Interacting with the authorization endpoints
-is very much the same as any other OAuth2 implementation; You'll register your custom web application as a Client Application
-with OpenCFP and from there, you can start to send folks through the [Authorization Code Grant Flow](https://tools.ietf.org/html/rfc6749#section-4.1)
-in order to eventually obtain a bearer token to act on their behalf.
+1. You will need to download and install [Docker](https://www.docker.com/get-docker) locally.
+2. You will need to download and install [docker-compose](https://docs.docker.com/compose/install/) too.
 
-There are some caveats to the above description that may differ from what you're used to in interacting with the typical
-OAuth2 implementation:
+#### Build & Run the image
 
-- Some users **you** send through the OAuth2 process will **not** have an account on the target instance of OpenCFP. We take care of that ([described below](#api-usage-scenario)).
-- You will not have to create an account on the target OpenCFP process to register your custom web application as an OAuth2 Client Application. We implement a subset of the [OAuth 2.0 Dynamic Client Registration Protocol](https://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-23) draft to allow applications to dynamically register themselves as Client Applications.
-
-With all of that out of the way, here are some nuts and bolts about our implementation of OAuth2:
-
-- We only support two grant types: Authorization Code & Refresh Token. This allows you to do work on behalf of any OpenCFP user (if authorized) and renew that authorization (bearer token) when it expires.
-- Bearer tokens have a time-to-live (TTL) of `3600` seconds (1 hour). Expired tokens will be rejected and you have the option of refreshing or requesting a new token. This may be configurable in the future.
-- Refresh tokens have a TTL of `604800` seconds (1 week). If you do not want to put users through the authorization code grant flow weekly, have automation rotate you access tokens.
-- It is **highly recommended** to only enable this API if you have a valid SSL certificate. OAuth2's security mechanisms are 100% reliant on TLS.
-- Authorization endpoints are described below.
-
-
-### [Endpoints](#json-api-endpoints)
-
-This serves as a high-level overview of the OpenCFP API.
-
-**Authorization**
-
-Authorization endpoints are used as part of the process for obtaining and renewing an Access Token representing a user's
-authorization for you (as a client developer) to act on their behalf. A step-by-step [usage scenario](#api-usage-scenario) is
-described for convenience below.
-
-| Method | Route | Description |
-| --- | --- | --- |
-| `GET` | `/oauth/authorize` | Starts the authorization flow. |
-| `POST` | `/oauth/access_token` | Used to trade an Authorization Code for an Access Token. |
-| `POST` | `/oauth/clients` | Client registration endpoint for web application to register as a Client Application. |
-
-**Speaker Profile API**
-
-The Speaker Profile API allows you to look up information about the currently authenticated user. You might use this to
-populate attributes in your own custom application based on a user's profile in a target instance of OpenCFP.
-
-| Method | Route | Description |
-| --- | --- | --- |
-| `GET` | `/api/me` | Returns JSON body representing information about the authenticated user. |
-
-**Talks API**
-
-The Talks API allows you to manage the collection of submitted talks for the currently authenticated user.
-
-| Method | Route | Description |
-| --- | --- | --- |
-| `POST` | `/api/talks` | Given JSON payload representing a talk, creates talk for authenticated user and issues a 201 Created upon success, appropriate error otherwise. |
-| `GET` | `/api/talks` | Returns JSON collection of all talks for authenticated user. |
-| `GET` | `/api/talks/{id}` | Returns a particular talk for authenticated user. Returns appropriate responses for unauthorized or non-existent talks. |
-| `PUT` | `/api/talks/{id}` | **Not Implemented** Updates a particular talk. Partial updates are supported through `PUT`. You are not required to send entire object representation. |
-| `DELETE` | `/api/talks/{id}` | **Not Implemented** Removes a talk. |
-
-
-### [Using the API](#json-api-usage)
-
-In this scenario, we will submit talks on behalf of a user and we make a few assumptions: we assume that you have **NOT** registered as a Client Application yet and that the user you are submitting talks on behalf of does **NOT** have an account on the target instance of OpenCFP.
-
-#### Register your app as a Client Application with target OpenCFP instance
-
-In order to allow third-party clients to register with a target OpenCFP instance as a Client Application, we support a partial
-implementation of the [OAuth 2.0 Dynamic Registration Draft](https://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-23). Specifically,
-we implement the ability for an arbitrary client to register itself as a Client Application without any pre-arranged authentication
-process (Software Statements / pre-arranged initial Access Token).
-
-If you haven't previously registered a client application and received a `client_id` and `client_secret`, you will need to either
-do so manually or have your application do so dynamically before being able to redirect users for authorization. Developers using
-the client registration endpoint **should only register once**. It's not going to break anything if you create a new client application
-for every single request... but don't do that. It's mean.
-
-To register your application as a Client Application, you will need to send the following request:
+Please remember to edit the file `config/docker.yml.dist` to match your environment, then you can build your own 
+docker image by executing:
 
 ```
-POST /oauth/register HTTP/1.1
-Host: someopencfp.com
-Accept: application/json
-Content-Type: application/json
-
-{
-	"client_name": "Some Custom Web Application"
-	"redirect_uri": "https://yourwebapp.com/callback"
-}
+$ ./.docker/build latest
 ```
 
-#### Redirect your user to request OpenCFP access
+And the result will be an image called `opencfp/opencfp:latest`.
+
+Or if you like you can run [docker-compose](https://docs.docker.com/compose/install/) command which will build the 
+image and run the containers automatically for you:
 
 ```
-GET https://someopencfp.com/oauth/authorize
+$  docker-compose -f docker-compose.yml.dist up --build -d
 ```
 
-**Parameters**
+So now if you head over to `http://localhost` you will be greeted with a running version of OpenCFP. 
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `client_id` | `string` | **Required.** The client identifier you received as part of the client application registration process. |
-| `redirect_uri` | `string` | The URL in your application where users will be sent after authorizing access. |
-| `scope` | `string` | A comma-separated list of scopes. If not provided, `scope` defaults to an empty list; basically allowing you to authenticate as the user with no authorization to the user's protected resources. |
-| `state` | `string` | An unguessable random string used to protect against CSRF attacks. You will send this back when you trade authorization code for access token. |
+#### Run PHP commands within the Container
 
-#### User authenticates or creates new account
+To run any command in the app container you can use the docker-compose 
+[exec](https://docs.docker.com/compose/reference/exec/) command, for example to run the `setup` script you run:
 
-A user must authenticate to the target instance of OpenCFP before authorizing access to a Client Application. For users
-that do not have a previously created account, they will have the option of creating a new account. When they complete
-the account creation process, they will be automatically authenticated into that account and proceed.
+```bash
+$ docker-compose -f docker-compose.yml.dist exec app composer run setup-env
+```
+OR
 
-**[Example Interface Here]**
-
-#### User authorizes access
-
-After the user authenticates, they are presented with an authorization interface where they can either approve or deny
-a Client Application's access to their protected resources. They will see the name of your Client Application in addition
-to the OAuth2 scopes you have requested. If the user approves, the flow proceeds to the next step. Otherwise, they are still
-redirected to your application without an Authorization Code and you would need to implement some way of handling that.
-
-**[Example Interface Here]**
-
-#### OpenCFP redirects back to your site with Authorization Code
-
-If the user accepts your request, OpenCFP redirects to your site with a `code` query parameter as well as the `state` you provided. If the states do not match, the process should be aborted.
-
-#### Trade Authorization Code for Access Token
-
-**Parameters**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `client_id` | `string` | **Required.** The client identifier you received as part of the client application registration process. |
-| `client_secret` | `string` | **Required.** The client secret you received as part of the client application registration process. |
-| `code` | `string` | **Required.** The code you received as a response when requesting the authorization code. |
-| `redirect_url` | `string` | The URL in your application where users will be sent after authorizing access. |
-
-**Response**
-
-``` json
-{
-	"access_token": "a12834769e4ae7ae178b292c2ee42f710c8316c7",
-	"refresh_token": "24710c8316c7c2ee42fa1ae7ae178b292834769e",
-	"token_type": "bearer",
-	"scope": "public,talks",
-	"expires_in": 3600
-}
+```bash
+$ docker-compose -f docker-compose.yml.dist exec app ./script/setup
 ```
 
-#### Use the token to do work on behalf of an OpenCFP user
+#### Running the image directly
 
-Once you have obtained an access token, you can do stuff! You will need to provide that access token for every request
-you make to restricted API endpoints. All requests **SHOULD** be sent using TLS (if the OpenCFP instance supports it) because
-otherwise, we're sending credentials in cleartext.
-
-Access tokens MUST be sent in an `Authorization` header as follows from our example access token above:
+You can run the image (after you build it) and link it to an already running database container using the docker 
+[run](https://docs.docker.com/engine/reference/commandline/run/) command like:
 
 ```
-GET /api/me HTTP/1.1
-Host: someopencfp.com
-Authorization: Bearer a12834769e4ae7ae178b292c2ee42f710c8316c7
+docker run -e CFP_ENV=production -e CFP_DB_HOST=database -e CFP_DB_PASS=root --name cfp --link database:database -p 80:80 -d opencfp/opencfp:latest
 ```
 
-> The examples that follow are subject to change. API endpoints and behaviour are still in flux. This should serve more as an example of what to expect as far as interacting with the API, not specifically how the endpoints will work.
+Where `database` is the name of the running database container. 
 
-**View speaker's profile**
 
-```
-GET /api/me HTTP/1.1
-Host: someopencfp.com
-Accept: application/json
-Authorization: Bearer a12834769e4ae7ae178b292c2ee42f710c8316c7
-```
+#### Access MySQL container
 
-```
-HTTP/1.1 200 OK
-Content-type: application/json
+To access MySQL you can use the following information:
 
-{
-	"first_name": "Ham",
-	"last_name": "Burglar",
-	"email": "hamburglar@someopencfp.com
-	"company": "ACME Corporation",
-	"twitter": "@hamburglar",
-	"bio": "..."
-}
-```
+- **Host**: 127.0.0.1
+- **User**: root
+- **Password**: root (or the one you specified in docker-compose) 
+ 
 
-**Submit a talk**
+For using docker in your development environment check [DOCKER.md](DOCKER.md) file. 
 
-```
-POST /api/talks HTTP/1.1
-Host: someopencfp.com
-Accept: application/json
-Content-Type: application/json
-Authorization: Bearer a12834769e4ae7ae178b292c2ee42f710c8316c7
-
-{
-	"title": "Sample Talk",
-	"description": "...",
-	"type": "regular",
-	"level": "mid",
-	"category": "api"
-}
-```
-
-```
-HTTP/1.1 201 Created
-Content-type: application/json
-
-{
-	"id": "1"
-	"title": "Sample Talk",
-	"description": "...",
-	"type": "regular",
-	"level": "mid",
-	"category": "api"
-}
-```
-
-**Verify talk was submitted**
-
-```
-GET /api/talks/1 HTTP/1.1
-Host: someopencfp.com
-Accept: application/json
-Authorization: Bearer a12834769e4ae7ae178b292c2ee42f710c8316c7
-```
-
-```
-HTTP/1.1 200 OK
-Content-type: application/json
-
-{
-	"id": "1"
-	"title": "Sample Talk",
-	"description": "...",
-	"type": "regular",
-	"level": "mid",
-	"category": "api"
-}
-```
-
-**Delete talk**
-
-```
-DELETE /api/talks/1 HTTP/1.1
-Host: someopencfp.com
-Accept: application/json
-Authorization: Bearer a12834769e4ae7ae178b292c2ee42f710c8316c7
-```
-
-```
-HTTP/1.1 200 OK
-```
-
-#### Refresh an access token after it expires
-
-Access tokens have a TTL of one hour. Once expired, you will need to either request another access token or we give you
-the ability to refresh access tokens through use of the Refresh Token Grant. Taking advantage of this is actually pretty simple.
-You'll basically send a request that looks similar to this:
-
-```
-POST /oauth/access_token HTTP/1.1
-Host: someopencfp.com
-Accept: application/json
-Authorization: Bearer a12834769e4ae7ae178b292c2ee42f710c8316c7
-
-grant_type=refresh_token&refresh_token=24710c8316c7c2ee42fa1ae7ae178b292834769e
-```
-
-```
-HTTP/1.1 200 OK
-Content-type: application/json
-
-{
-	"access_token": "2ee42f710c8316c7a12834769e4ae7ae178b292c",
-	"refresh_token": "1ae7ae178b292834769e24710c8316c7c2ee42fa",
-	"token_type": "bearer",
-	"scope": "public,talks",
-	"expires_in": 3600
-}
-```
-
-After refreshing the access token, you'll obviously want to update the previous token you've associated with your user.
-Also note that **refresh tokens are rotated** in addition to the access token. You'll want to keep track of this per-user.
+_PS_: You can always modify the file `docker-compose.yml.dist` and have your own setup.
 
 
 ## [Command-line Utilities](#command-line-utilities)
@@ -561,7 +412,7 @@ OpenCFP comes bundled with a few command-line utilities to administer the system
 can be found by running the following in the project root:
 
 ```
-$ bin/opencfp
+$ bin/console
 ```
 
 ### [Admin Group Management](#admin-group-management)
@@ -571,14 +422,30 @@ Administrators are authorized to review speaker information in addition to speci
 Adding `speaker@opencfp.org` to the admin group:
 
 ```
-$ bin/opencfp admin:promote --env=production speaker@opencfp.org
+$ bin/console user:promote --env=production speaker@opencfp.org admin
 ```
 
 Removing `speaker@opencfp.org` from the admin group:
 
 ```
-$ bin/opencfp admin:demote --env=production speaker@opencfp.org
+$ bin/console user:demote --env=production speaker@opencfp.org admin
 ```
+
+### [Reviewer Group Management](#reviewer-group-management)
+Reviewers are authorized to see talks and give ratings to them.
+
+Adding `speaker@opencfp.org` to the reviewer group:
+
+```
+$ bin/console user:promote --env=production speaker@opencfp.org reviewer
+```
+
+Removing `speaker@opencfp.org` from the reviewer group:
+
+```
+$ bin/console user:demote --env=production speaker@opencfp.org reviewer
+```
+
 
 ### [User Management](#user-management)
 
@@ -587,22 +454,28 @@ Users are needed for you system, and sometimes you want to add users via command
 Adding a speaker:
 
 ```
-$ bin/opencfp user:create --first_name="Speaker" --last_name="Name" --email="speaker@opencfp.org" --password="somePassw0rd!"
+$ bin/console user:create --first_name="Speaker" --last_name="Name" --email="speaker@opencfp.org" --password="somePassw0rd!"
 ```
 
 Add an admin:
 
 ```
-$ bin/opencfp user:create --first_name="Admin" --last_name="Name" --email="admin@opencfp.org" --password="somePassw0rd!" --admin
+$ bin/console user:create --first_name="Admin" --last_name="Name" --email="admin@opencfp.org" --password="somePassw0rd!" --admin
+```
+
+Add a reviewer:
+
+```
+$ bin/console user:create --first_name="Admin" --last_name="Name" --email="admin@opencfp.org" --password="somePassw0rd!" --reviewer
 ```
 
 ### [Clear Caches](#clear-caches)
 
-OpenCFP uses Twig as a templating engine and HTML Purifier for input filtering. Both of these packages maintain a cache,
-if enabled. If you need to clear all application caches:
+OpenCFP uses Twig as a templating engine and HTML Purifier for input filtering. Both of these packages maintain a cache.
+If you need to clear all application caches:
 
 ```
-$ bin/opencfp cache:clear
+$ bin/console cache:clear
 ```
 
 ### [Scripts to Rule Them All](#scripts-rule-all)
@@ -614,21 +487,14 @@ for an easy to follow convention for common tasks when developing applications.
 This command will install all dependencies, run database migrations, and alert you of any missing configs.
 
 ```
-$ script/setup
+$ composer run setup-env
 ```
 
 #### Update Application
 This command will update all dependencies and run new migrations
 
 ```
-$ script/update
-```
-
-#### Start Development/Local Server
-This command will start a built-in php web server, using port `8000`.
-
-```
-$ script/server
+$ composer run update-env
 ```
 
 #### Run Tests
@@ -636,8 +502,24 @@ This command will run the PHPUnit test suite using distributed phpunit config, `
 no phpunit.xml is found in the root.
 
 ```
-$ script/test
+$ composer run test
 ```
+
+## [Compiling Frontend Assets](#compiling-frontend-assets)
+
+OpenCFP ships with a pre-compiled CSS file. However, we now include the Sass / PostCSS used to compile front-end assets. You are free to modify these source files to change brand colors or modify your instance however you see fit. Remember, you can do **nothing** and take advantage of the pre-compiled CSS we ship. You only need these instructions if you want to customize or contribute to the look and feel of OpenCFP. Let's take a look at this new workflow for OpenCFP.
+
+Install Node dependencies using `yarn`.
+
+```bash
+yarn install
+```
+
+Now dependencies are installed and we're ready to compile assets. Check out the `scripts` section of `package.json`. A normal development workflow is to run either `yarn run watch` or `yarn run watch-poll` (for OS that don't have `fs-events`) and begin work. When you make changes to Sass files, Webpack will recompile assets, but it doesn't compress the output. To do that, run `yarn run prod` (an alias for `yarn run production`). This will run the same compilation, but will compress the output.
+
+The main `app.scss` file is at [`resources/assets/sass/app.scss`](resources/assets/sass/app.scss). We use [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) to compile our Sass. Mix is configurable to run without Laravel, so we take advantage of that because it really makes dealing with Webpack a lot simpler. Our Mix configuration is at [`webpack.mix.js`](webpack.mix.js). In it, we run our `app.scss` through a Sass compilation step, we copy FontAwesome icons and finally run the compiled CSS through [Tailwind CSS](https://tailwindcss.com), a PostCSS plugin.
+
+TailwindCSS is a new utility-first CSS framework that uses CSS class composition to piece together interfaces. Check out [their documentation](https://tailwindcss.com/docs/what-is-tailwind/) for more information on how to use the framework. We use it extensively across OpenCFP and it saves a lot of time and keeps us from having to maintain *too much* CSS. If you take a look through our `app.scss`, you'll see a lot of calls to [`@apply`](https://tailwindcss.com/docs/functions-and-directives#apply). This is NOT a Sass construct. It's a TailwindCSS function used to mixin existing classes into our custom CSS.
 
 ## [Testing](#testing)
 
@@ -646,11 +528,10 @@ your environment for testing:
 
 1. Create a testing database, and update the name and credentials in
    /config/testing.yml
-2. Copy the default `phinx.yml.dist` to `phinx.yml`
-3. The recommended way to run the tests is:
+2. The recommended way to run the tests is:
 
 ```
-$ script/test
+$ composer run test
 ```
 
 The default phpunit.xml.dist file is in the root directory for the project.
@@ -660,4 +541,5 @@ The default phpunit.xml.dist file is in the root directory for the project.
 **I'm getting weird permissions-related errors to do with HTML Purifier.**
 
 You may need to edit directory permissions for some vendor packages such as HTML Purifier. Check the `/cache` directory's
-permissions first (if you have `cache.enabled` set to `true`).
+permissions first.
+

@@ -23,3 +23,5 @@ phinx.yml
 /phpunit.xml
 /web/.well-known
 templates copy/
+/edited/
+Homestead.yaml

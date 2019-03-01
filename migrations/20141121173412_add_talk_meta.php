@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2013-2018 OpenCFP
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ *
+ * @see https://github.com/opencfp/opencfp
+ */
 use Phinx\Migration\AbstractMigration;
 
 class AddTalkMeta extends AbstractMigration
@@ -15,8 +25,7 @@ class AddTalkMeta extends AbstractMigration
             ->addColumn('rating', 'integer', ['default' => 0])
             ->addColumn('viewed', 'boolean', ['default' => false])
             ->addColumn('created', 'datetime')
-            ->addIndex(['admin_user_id', 'talk_id'], ['name' => 'talk_meta--admin_user_id__talk_id', 'unique' => true])
+            ->addIndex(['admin_user_id', 'talk_id'], ['name' => 'talk_meta__admin_user_id__talk_id', 'unique' => true])
             ->create();
     }
-
 }

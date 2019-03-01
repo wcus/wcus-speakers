@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2013-2018 OpenCFP
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ *
+ * @see https://github.com/opencfp/opencfp
+ */
 use Phinx\Migration\AbstractMigration;
 
 class FixDefaultsForUsersTable extends AbstractMigration
@@ -19,7 +29,7 @@ class FixDefaultsForUsersTable extends AbstractMigration
         // https://github.com/cartalyst/sentry/blob/2.1/schema/mysql.sql
         //
         $users->changeColumn('permissions', 'text', ['null' => true]);
-        $users->changeColumn('activated', 'boolean', ['default' => 0]);
+        $users->changeColumn('activated', 'boolean', ['default' => false]);
         $users->changeColumn('activation_code', 'string', ['null' => true]);
         $users->changeColumn('activated_at', 'datetime', ['null' => true, 'default' => '1970-01-01 00:00:00']);
         $users->changeColumn('last_login', 'datetime', ['null' => true, 'default' => '1970-01-01 00:00:00']);
