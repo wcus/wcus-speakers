@@ -1,6 +1,6 @@
 {% extends "layouts/reviewer.twig" %}
 {% block content %}
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between wcus-full-width-mobile">
         <div>
             <h2 class="mb-2">
                 {{ talk.title|raw }} {% if talk.speaker.isAllowedToSee('name') %}<span class="text-grey-dark">&mdash; {{ talk.speaker.name }}</span> {% endif %}
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="flex">
+    <div class="flex wcus-full-width-mobile wcus-margin-top">
         <div class="w-2/3 mr-8">
             {{ talk.description|striptags|markdown }}
             {% if talk.other is not empty %}

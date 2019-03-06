@@ -1,0 +1,169 @@
+/**
+ * Breakpoint variables
+ */
+$phone-only: "screen and (max-width: 599px)";
+$tablet-portrait-up: "screen and (min-width: 600px)";
+$tablet-landscape-down: "screen and (max-width: 899px)";
+$tablet-landscape-up: "screen and (min-width: 900px)";
+$desktop-up: "screen and (min-width: 1200px)";
+
+/**
+ * Color Variables
+ */
+$textmain: #2f2f2f;
+
+.margin-right {
+    margin-right: 1em;
+}
+
+.wcus-margin-top {
+    margin-top: 1em;
+}
+
+.wcus-button-height {
+    .btn {
+        line-height: 4em;
+    }
+}
+
+.wcus-tablet-padding {
+    @media #{$tablet-landscape-down} {
+        padding: 0 2rem;
+    }
+}
+
+.wcus-mobile-padding {
+    @media #{$phone-only} {
+        padding: 0 2rem;
+    }
+}
+
+.site-title {
+    @media #{$phone-only} {
+        font-size: 1.5em;
+    }
+}
+
+#main-navigation {
+    padding: 0 2rem;
+
+    .container {
+        padding: 0;
+    }
+}
+
+#hero {
+    padding: 6rem 2rem;
+
+    .container {
+        padding: 0;
+    }
+}
+
+#menu-toggle {
+    box-sizing: border-box;
+    width: 45px;
+    height: 45px;
+    z-index: 4;
+	display: block;
+	position: relative;
+	text-indent: -999em;
+	background: transparent;
+	border: 0px solid transparent;
+	padding: 0;
+
+	&:active {
+		background: transparent;
+	}
+
+	&[aria-expanded=true] {
+		&:before {
+			transform: rotate(45deg);
+			top: 20px;
+		}
+
+		span {
+			opacity: 0;
+		}
+
+		&:after {
+			transform: rotate(-45deg);
+			top: 20px;
+		}
+	}
+
+	span,
+	&:before,
+	&:after {
+		transition-property: transform, top, bottom, right, opacity;
+		transition-duration: 0.25s;
+		transition-timing-function: ease-in;
+		background: $textmain;
+		content: '';
+		display: block;
+		width: 30px;
+		height: 5px;
+		position: absolute;
+		right: 7px;
+	}
+
+	&:before {
+		top: 10px;
+	}
+
+	span {
+		top: 20px;
+	}
+
+	&:after {
+		top: 30px;
+	}
+}
+
+
+@media #{$tablet-landscape-up} {
+	#menu-toggle {
+		display: none;
+	}
+}
+
+@media #{$tablet-landscape-down} {
+    #main-navigation > .flex {
+        flex-wrap: wrap;
+    }
+    #navigation {
+        display: none;
+        width: 100%;
+
+        &.menu-open {
+            display: block;
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            font-size: 1.5em;
+            padding: 0.5em 0;
+        }
+    }
+}
+
+.wcus-full-width-tablet {
+    @media #{$tablet-landscape-down} {
+        flex-wrap: wrap;
+
+        > *:not(a) {
+            width: 100%;
+        }
+    }
+}
+
+.wcus-full-width-mobile {
+    @media #{$phone-only} {
+        flex-wrap: wrap;
+
+        > *:not(a) {
+            width: 100%;
+        }
+    }
+}

@@ -6,13 +6,14 @@
         <link href="{{ assets('css/app.css') }}" rel="stylesheet" media="screen">
     </head>
     <body class="border-t-4 border-brand">
-        <nav class="{% if not active('homepage') %}border-b border-white{% endif %}">
+        <nav id="main-navigation" class="{% if not active('homepage') %}border-b border-white{% endif %}">
             <div class="container mx-auto flex justify-between">
                 <a class="font-serif flex items-center" href="{{ url('homepage') }}">
                     {# <img class="w-10 mr-2" src="{{ assets('img/logo.svg') }}" alt="OpenCFP"> #}
-                    <h1 class="font-normal m-0">WordCamp US 2019</h1>
+                    <h1 class="site-title font-normal m-0">{{ site.title }}</h1>
                 </a>
-                <div class="flex">
+                <button id="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span></span>Primary Menu</button>
+                <div id="navigation" class="flex">
                     <a href="{{ url('speaker_package') }}" class="mr-8 py-6 {% if active('speaker_package') %}border-b-4 border-brand{% else %}text-soft{% endif %}">Speaker Information</a>
                     <a href="{{ url('talk_ideas') }}" class="mr-8 py-6 {% if active('talk_ideas') %}border-b-4 border-brand{% else %}text-soft{% endif %}">Talk Ideas</a>
                     {% if user is defined and user is not empty %}
@@ -35,7 +36,7 @@
         {% block header %}
         {% endblock %}
 
-        <main class="container mx-auto mt-8 flex">
+        <main class="container mx-auto mt-8 flex wcus-full-width-mobile wcus-tablet-padding">
             <div class="flex-1 mr-16">{% block sidebar %}{% endblock %}</div>
             <div class="flex-3 w-full">
                 {% include "_flash.twig" %}
@@ -48,6 +49,29 @@
                     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
                     crossorigin="anonymous"></script>
         {% endblock %}
+
+        <script>
+                const navWrapper = document.getElementById('main-navigation')
+                const navigation = document.getElementById('navigation');
+                const button = document.getElementById('menu-toggle');
+                let menuButton = false;
+
+                button.addEventListener( 'click', toggleMenu );
+
+                function toggleMenu(e) {
+                    if ( ! menuButton ) {
+                        navigation.classList.add('menu-open');
+                        button.setAttribute('aria-expanded', 'true');
+                    } else {
+                        navigation.classList.remove('menu-open');
+                        button.setAttribute('aria-expanded', 'false');
+                    }
+                    menuButton = ! menuButton;
+                }
+                
+    
+        </script>
+
 
         {% if site.show_contrib_banner %}
         {% include "_forkme.twig" %}

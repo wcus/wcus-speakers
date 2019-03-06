@@ -3,7 +3,7 @@
         <input name="id" type="hidden" value="{{ id }}">
     {% endif %}
 
-    <div class="flex">
+    <div class="flex wcus-full-width-mobile">
         <div class="w-1/2 mr-4">
             <label for="form-user-email"><span class="text-red-dark font-bold" title="Required Field">*</span> Email</label>
             <input id="form-user-email" type="email" name="email" placeholder="you@example.com" value="{{ email | default('') }}" required>

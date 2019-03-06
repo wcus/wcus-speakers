@@ -17,7 +17,7 @@
     </form>
 
     {% for speaker in speakers %}
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex justify-between items-center mb-8 wcus-full-width-tablet">
             <div class="flex">
                 <img class="w-10 h-10 mr-3 rounded-full" src="{{ speaker.photo_path ? uploads(speaker.photo_path) : assets('img/dummyphoto.jpg') }}">
                 <div>

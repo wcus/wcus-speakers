@@ -25,3 +25,4 @@ phinx.yml
 templates copy/
 /edited/
 Homestead.yaml
+node_modules
