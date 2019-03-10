@@ -1,0 +1,21 @@
+.account-banner {
+  padding: 30px;
+  background: $blue;
+  color: $white;
+
+  h2 {
+    color: $white;
+  }
+
+  .account-banner__links {
+    a {
+      color: $white;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $white;
+      }
+    }
+  }
+}

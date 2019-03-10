@@ -79,13 +79,6 @@ main {
  * 2. Show the overflow in Edge and IE.
  */
 
-hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-}
-
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
@@ -1520,6 +1513,50 @@ input[type="password"] {
   margin-bottom: 1em;
 }
 
+.page-content {
+  margin: 0 auto;
+  max-width: 870px;
+}
+
+.page-content .page-title {
+  margin: 0 0 40px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #303030;
+}
+
+/**
+ * --------------------------------------------------------------------
+ * Responsive
+ * --------------------------------------------------------------------
+ */
+
+.wcus-margin-top {
+  margin-top: 1em;
+}
+
+@media screen and (max-width: 899px) {
+  .wcus-full-width-tablet {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .wcus-full-width-tablet > *:not(a) {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .wcus-full-width-mobile {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .wcus-full-width-mobile > *:not(a) {
+    width: 100%;
+  }
+}
+
 .site-header {
   padding: 30px 0;
 }
@@ -1594,18 +1631,6 @@ input[type="password"] {
   background: linear-gradient(rgba(0, 0, 0, 0), black 75%);
 }
 
-.page-content {
-  margin: 0 auto;
-  max-width: 870px;
-}
-
-.page-content .page-title {
-  margin: 0 0 40px;
-  text-transform: uppercase;
-  font-weight: 800;
-  color: #303030;
-}
-
 .account-banner {
   padding: 30px;
   background: #003b63;
@@ -1624,42 +1649,4 @@ input[type="password"] {
 .account-banner .account-banner__links a:active,
 .account-banner .account-banner__links a:focus {
   color: #fff;
-}
-
-/**
- * --------------------------------------------------------------------
- * Responsive
- * --------------------------------------------------------------------
- */
-
-.wcus-margin-top {
-  margin-top: 1em;
-}
-
-@media screen and (max-width: 599px) {
-  .site-title {
-    font-size: 1.5em;
-  }
-}
-
-@media screen and (max-width: 899px) {
-  .wcus-full-width-tablet {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-
-  .wcus-full-width-tablet > *:not(a) {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 599px) {
-  .wcus-full-width-mobile {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-
-  .wcus-full-width-mobile > *:not(a) {
-    width: 100%;
-  }
 }

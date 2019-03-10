@@ -1,0 +1,70 @@
+.site-header {
+  padding: 30px 0;
+
+  a {
+    color: $cardinal;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $blue;
+      border-color: currentColor;
+    }
+    
+    &.active {
+      border-color: currentColor;
+    }
+    
+    & + a {
+      margin-left: 2em;
+    }
+  }
+
+  .site-title a {
+    margin:  auto;
+    display: block;
+    width: 167px;
+    height: 181px;
+    text-decoration: none;
+    background-repeat: none;
+    background-position: center;
+  }
+
+  .account-navigation {
+    justify-content: flex-end;
+  }
+
+  .page-inner:not(.page-dashboard) & {
+    border-bottom: 3px dotted $light-brown;
+    margin-bottom: 90px;
+  }
+}
+
+.hero {
+  padding: 90px 0 0;
+  margin-bottom: 90px;
+  background-size: cover;
+  background-position: center;
+
+  .hero__text-box {
+    padding: 30px;
+    margin-bottom: 90px;
+    background: $blue;
+    color: white;
+    font-size: 16px;
+  }
+  
+  .btn-white {
+    color: $blue;
+  }
+  
+  .hero__information {
+    padding: 30px 0;
+    color: $white;
+    border-top: 3px dotted $white;
+    background: linear-gradient( rgba(0,0,0,0), rgba(0,0,0,1) 75%);
+  }
+}

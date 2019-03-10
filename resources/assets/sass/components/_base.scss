@@ -1,0 +1,62 @@
+body {
+  background-color: $off-white;
+  font-family: $body;
+  font-size: 18px;
+  line-height: 1.555555;
+  padding-bottom: 90px;
+}
+
+h1, h2, h3 {
+  font-family: $header;
+}
+
+h2 {
+  color: $bright-blue;
+  font-size: 32px;
+}
+
+h3 {
+  margin: 30px 0 20px;
+  color: $bright-blue;
+  font-size: 24px;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+ul {
+  margin-bottom: 1em;
+}
+
+a {
+  color: $blue;
+  font-weight: 600;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $cardinal;
+  }
+}
+
+label {
+  color: $black;
+  font-size: 18px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  margin-bottom: 1em;
+}
+
+.page-content {
+  margin: 0 auto;
+  max-width: 870px;
+  
+  .page-title {
+    margin: 0 0 40px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: $black;
+  }
+}
