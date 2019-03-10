@@ -10,6 +10,10 @@ function deleteTalk(tid) {
         success: function(data, textStatus, jqXHR) {
             if (data.delete == 'ok') {
                 $("#talk-"+tid).remove();
+                // Add the submission button back to the page if needed.
+                if ( ! $(".account-banner__actions .submit-talk").length ) {
+                    $(".account-banner__actions").prepend('<p><a class="btn btn-white btn-small submit-talk" href="{{ url('talk_new') }}">Submit a talk</a></p>');
+                }
             } else if (data.delete == 'no-user') {
                 alert("You must be logged in to delete talks");
             } else {
@@ -67,9 +71,9 @@ function deleteTalk(tid) {
             </div>
         </div>
 
-        <div class="text-right">
-            {% if profile.talks is not empty %}
-                <p><a class="btn btn-white btn-small" href="{{ url('talk_new') }}">Submit a talk</a></p>
+        <div class="account-banner__actions text-right">
+            {% if profile.talks is not empty and profile.talks|length < 2  %}
+                <p><a class="btn btn-white btn-small submit-talk" href="{{ url('talk_new') }}">Submit a talk</a></p>
             {% endif %}
             <p>
                 <a class="btn btn-white-o btn-small" href="{{ url('password_edit') }}">Change Password</a>
