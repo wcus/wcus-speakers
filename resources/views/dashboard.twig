@@ -24,7 +24,7 @@ function deleteTalk(tid) {
 {% block content %}
     {% if profile.needsProfile() %}
     <div class="text-center">
-        <i class="fa fa-user-circle fa-5x"></i>
+        <i class="fa fa-user-circle fa-5x text-soft" aria-hidden></i>
         <h1>Welcome to {{ site.title }}!</h1>
         <p>It looks like this is your first time here...</p>
         <p><a href="{{ url('user_edit', { id: user.id }) }}" class="btn btn-brand">Fill out your profile</a></p>

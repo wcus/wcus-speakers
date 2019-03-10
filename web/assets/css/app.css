@@ -570,6 +570,14 @@ button,
   white-space: nowrap;
 }
 
+.btn-brand:hover,
+.btn-brand:active,
+.btn-brand:focus {
+  color: #fff;
+  background: #932224;
+  border-color: #932224;
+}
+
 .btn-white {
   background-color: #fff;
   color: #bd2b2e;
@@ -1624,4 +1632,10 @@ input[type="password"] {
 .account-banner .account-banner__links a:active,
 .account-banner .account-banner__links a:focus {
   color: #fff;
+}
+
+.account-banner .btn:hover,
+.account-banner .btn:active,
+.account-banner .btn:focus {
+  color: #003b63;
 }

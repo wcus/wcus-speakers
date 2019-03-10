@@ -30,6 +30,14 @@
 .btn-brand {
   @apply .bg-brand .text-white .border-2 .border-brand;
   white-space: nowrap;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $white;
+    background: darken( $cardinal, 10% );
+    border-color: darken( $cardinal, 10% );
+  }
 }
 
 .btn-white {

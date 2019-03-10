@@ -18,4 +18,12 @@
       }
     }
   }
+  
+  .btn { 
+    &:hover,
+    &:active,
+    &:focus {
+      color: $blue;
+    }
+  }
 }
