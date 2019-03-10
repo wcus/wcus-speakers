@@ -795,10 +795,6 @@ button,
   font-family: Zilla Slab, serif;
 }
 
-.font-thin {
-  font-weight: 200;
-}
-
 .font-normal {
   font-weight: 400;
 }
@@ -825,11 +821,6 @@ button,
 
 .m-0 {
   margin: 0;
-}
-
-.my-1 {
-  margin-top: .25rem;
-  margin-bottom: .25rem;
 }
 
 .my-4 {
@@ -994,11 +985,7 @@ button,
 }
 
 .text-soft {
-  color: #9babb4;
-}
-
-.text-dark {
-  color: #364349;
+  color: #9e8b7e;
 }
 
 .text-brand {
@@ -1057,10 +1044,6 @@ button,
   font-size: .875rem;
 }
 
-.text-base {
-  font-size: 1rem;
-}
-
 .text-lg {
   font-size: 1.125rem;
 }
@@ -1109,14 +1092,6 @@ button,
 
 .w-2\/3 {
   width: 66.66667%;
-}
-
-.w-2\/5 {
-  width: 40%;
-}
-
-.w-3\/5 {
-  width: 60%;
 }
 
 .w-1\/6 {

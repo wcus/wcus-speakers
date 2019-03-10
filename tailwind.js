@@ -334,7 +334,7 @@ module.exports = {
   */
 
   textColors: Object.assign({
-    'soft': colors['grey'],
+    'soft': '#9E8B7E',
     'dark': colors['grey-darkest'],
     'brand': colors['brand'],
   }, colors),
