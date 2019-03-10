@@ -49,6 +49,51 @@ input[type="text"], input[type="email"], input[type="password"] {
   margin-bottom: 1em;
 }
 
+.site-header {
+  padding: 30px 0;
+
+  a {
+    color: $cardinal;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $blue;
+      border-color: currentColor;
+    }
+    
+    &.active {
+      border-color: currentColor;
+    }
+    
+    & + a {
+      margin-left: 2em;
+    }
+  }
+
+  .site-title a {
+    margin:  auto;
+    display: block;
+    width: 167px;
+    height: 181px;
+    text-decoration: none;
+    background-repeat: none;
+    background-position: center;
+  }
+
+  .account-navigation {
+    justify-content: flex-end;
+  }
+
+  .page-inner:not(.page-dashboard) & {
+    border-bottom: 3px dotted $light-brown;
+    margin-bottom: 90px;
+  }
+}
+
 .page-content {
   margin: 0 auto;
   max-width: 870px;
