@@ -8,6 +8,11 @@
 @tailwind preflight;
 
 /**
+ * Custom variables
+ */
+@import "abstracts/variables";
+
+/**
  * Here you would import any custom component classes; stuff that you'd
  * want loaded *before* the utilities so that the utilities can still
  * override them.
@@ -15,7 +20,6 @@
  * @import "my-components/foo";
  * @import "my-components/bar";
  */
-
 @import "components/buttons";
 
 /**
