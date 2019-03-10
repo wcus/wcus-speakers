@@ -1470,6 +1470,25 @@ h3 {
   font-family: "Nunito", sans-serif;
 }
 
+h2 {
+  color: #003988;
+  font-size: 32px;
+}
+
+h3 {
+  margin: 30px 0 20px;
+  color: #003988;
+  font-size: 24px;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+ul {
+  margin-bottom: 1em;
+}
+
 a {
   color: #003b63;
   font-weight: 600;
@@ -1555,6 +1574,18 @@ a:focus {
   background: linear-gradient(rgba(0, 0, 0, 0), black 75%);
 }
 
+.page-content {
+  margin: 0 auto;
+  max-width: 870px;
+}
+
+.page-content .page-title {
+  margin: 0 0 40px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #303030;
+}
+
 /**
  * --------------------------------------------------------------------
  * Responsive
@@ -1571,12 +1602,6 @@ a:focus {
 
 .wcus-button-height .btn {
   line-height: 4em;
-}
-
-@media screen and (max-width: 899px) {
-  .wcus-tablet-padding {
-    padding: 0 2rem;
-  }
 }
 
 @media screen and (max-width: 599px) {
