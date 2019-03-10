@@ -42,8 +42,6 @@
             </li>
         </ul>
     </p>
-    {% if user is not defined %}
-    <p><a href="{{ url('login') }}">Login or register</a> to submit your talk!</p>
-    {% endif %}
+    {% include "_call-submit.twig" %}
 </div>
 {% endblock %}

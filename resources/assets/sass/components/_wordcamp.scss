@@ -40,6 +40,15 @@ a {
   }
 }
 
+label {
+  color: $black;
+  font-size: 18px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  margin-bottom: 1em;
+}
+
 .site-header {
   padding: 30px 0;
 
@@ -79,7 +88,7 @@ a {
     justify-content: flex-end;
   }
 
-  .page-inner & {
+  .page-inner:not(.page-dashboard) & {
     border-bottom: 3px dotted $light-brown;
     margin-bottom: 90px;
   }
@@ -120,6 +129,28 @@ a {
     text-transform: uppercase;
     font-weight: 800;
     color: $black;
+  }
+}
+
+.account-banner {
+  padding: 30px;
+  background: $blue;
+  color: $white;
+
+  h2 {
+    color: $white;
+  }
+
+  .account-banner__links {
+    a {
+      color: $white;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $white;
+      }
+    }
   }
 }
 

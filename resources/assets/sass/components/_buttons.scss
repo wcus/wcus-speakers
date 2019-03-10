@@ -10,6 +10,13 @@
   text-decoration: none;
 }
 
+.btn-small {
+  font-size: 16px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+// This class doesn't seem to work.
 .btn-sm {
   @apply .py-2 .px-3 .rounded .text-sm;
   white-space: nowrap;

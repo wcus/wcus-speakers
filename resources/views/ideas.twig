@@ -36,8 +36,6 @@
         <li>Thursday, April 4th, 7pm – 8pm (UTC -6) / 1am – 2am (UTC)</li>
     </ul>
 
-    {% if user is not defined %}
-    <p><a href="{{ url('login') }}">Login or register</a> to submit your talk!</p>
-    {% endif %}
+    {% include "_call-submit.twig" %}
 </div>
 {% endblock %}

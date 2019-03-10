@@ -24,55 +24,58 @@ function deleteTalk(tid) {
 {% block content %}
     {% if profile.needsProfile() %}
     <div class="text-center">
-        <i class="fa fa-user-circle text-soft fa-5x"></i>
-        <h1 class="font-serif font-thin text-5xl">Welcome to {{ site.title }}!</h1>
-        <p class="text-soft mb-8">It looks like this is your first time here...</p>
-        <a href="{{ url('user_edit', { id: user.id }) }}" class="btn btn-brand">Fill out your profile</a>
-        <br><br>
-        <p class="text-soft mb-8">Click below to delete your account without going any further</p>
-        <a class="btn btn-brand" href="{{ url('user_delete') }}" >Delete your account</a>
+        <i class="fa fa-user-circle fa-5x"></i>
+        <h1>Welcome to {{ site.title }}!</h1>
+        <p>It looks like this is your first time here...</p>
+        <p><a href="{{ url('user_edit', { id: user.id }) }}" class="btn btn-brand">Fill out your profile</a></p>
+        <p>Click below to delete your account without going any further</p>
+        <p><a class="btn btn-brand" href="{{ url('user_delete') }}" >Delete your account</a></p>
     </div>
     {% else %}
-    <div class="bg-brand p-8 text-white flex items-center justify-between wcus-full-width-mobile">
-        <div class="flex items-center">
-            <div class="mr-6 margin-right">
-                {% if profile.photo is not empty %}
-                    <img src="{{ uploads(profile.photo) }}" class="rounded-full border-4 border-white w-32"/>
-                {% else %}
-                    <img src="{{ assets('img/dummyphoto.jpg') }}" class="rounded-full border-4 border-white w-32"/>
-                {% endif %}
-            </div>
-            <div>
-                <h2 class="m-0">{{ profile.name }}</h2>
-                {% if profile.company %}
-                    <p>{{ profile.company }}</p>
-                {% endif %}
+    <div class="account-banner flex items-center justify-between">
+        <div class="mr-6">
+            {% if profile.photo is not empty %}
+                <img src="{{ uploads(profile.photo) }}" class="rounded-full border-4 border-white w-32"/>
+            {% else %}
+                <img src="{{ assets('img/dummyphoto.jpg') }}" class="rounded-full border-4 border-white w-32"/>
+            {% endif %}
+        </div>
+        <div class="flex-1">
+            <h2 class="m-0">{{ profile.name }}</h2>
+            {% if profile.company %}
+                <p>{{ profile.company }}</p>
+            {% endif %}
 
-                {% if profile.twitter %}
-                    <a class="text-white text-xs" href="https://twitter.com/{{ profile.twitter }}" title="{{ profile.name }} on Twitter"><i class="fa fa-fw fa-twitter"></i> @{{ profile.twitter }}</a>
-                {% endif %}
+            <div class="account-banner__links">
+            {% if profile.twitter %}
+                <a class="text-xs" href="https://twitter.com/{{ profile.twitter }}">
+                    <i class="fa fa-fw fa-twitter" aria-hidden></i> @{{ profile.twitter }}
+                </a><br />
+            {% endif %}
 
-                {% if profile.joindInUsername %}
-                    <br /><a class="text-white text-xs"
-                       href="{{ profile.joindInUrl }}"
-                       title="Follow {{ profile.name }} on joind.in">
-                       <i class="fa fa-fw fa-commenting-o"></i> {{ profile.joindInUsername }}
-                   </a>
-                {% endif %}
+            {% if profile.joindInUsername %}
+                <a class="text-xs" href="{{ profile.joindInUrl }}">
+                   <i class="fa fa-fw fa-commenting-o" aria-hidden></i> {{ profile.joindInUsername }}
+               </a><br />
+            {% endif %}
 
-                {% if profile.url %}
-                    <br /><a class="text-white text-xs" href="{{ profile.url }}">
-                        <i class="fa fa-fw fa-desktop"></i> {{ profile.url }}</a>
-                {% endif %}
+            {% if profile.url %}
+                <a class="text-xs" href="{{ profile.url }}">
+                    <i class="fa fa-fw fa-desktop" aria-hidden></i> {{ profile.url }}
+                </a><br />
+            {% endif %}
             </div>
         </div>
-        <div class="wcus-button-height">
-            <a class="btn btn-white-o mr-2" href="{{ url('password_edit') }}">Change Password</a>
-            <a class="btn btn-white-o mr-2" href="{{ url('user_edit', { id: user.id }) }}">Edit Profile</a>
-            <a class="btn btn-white-o mr-2" href="{{ url('user_delete') }}">Delete Profile</a>
+
+        <div class="text-right">
             {% if profile.talks is not empty %}
-                <a class="btn btn-white mr-4" href="{{ url('talk_new') }}">Submit a talk</a>
+                <p><a class="btn btn-white btn-small" href="{{ url('talk_new') }}">Submit a talk</a></p>
             {% endif %}
+            <p>
+                <a class="btn btn-white-o btn-small" href="{{ url('password_edit') }}">Change Password</a>
+                <a class="btn btn-white-o btn-small" href="{{ url('user_edit', { id: user.id }) }}">Edit Profile</a>
+                <a class="btn btn-white-o btn-small" href="{{ url('user_delete') }}">Delete Profile</a>
+            </p>
         </div>
     </div>
 
