@@ -1,6 +1,13 @@
 .btn {
   @apply .py-3 .px-6 .rounded;
   white-space: nowrap;
+  display: inline-block;
+  font-family: $header;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
 }
 
 .btn-sm {
@@ -27,7 +34,8 @@
   @apply .border-2 .border-white .text-white;
   white-space: nowrap;
 
-  &:hover {
+  &:hover,
+  &:focus {
     @apply .bg-white .text-brand;
   }
 }
@@ -36,7 +44,8 @@
   @apply .border-2 .border-brand .text-brand;
   white-space: nowrap;
 
-  &:hover {
+  &:hover,
+  &:focus {
     @apply .bg-brand .text-white;
   }
 }
