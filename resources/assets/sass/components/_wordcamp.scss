@@ -59,6 +59,11 @@ a {
   .account-navigation {
     justify-content: flex-end;
   }
+
+  .page-inner & {
+    border-bottom: 3px dotted $light-brown;
+    margin-bottom: 90px;
+  }
 }
 
 .hero {

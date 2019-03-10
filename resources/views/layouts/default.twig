@@ -6,8 +6,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700|Nunito:700,800" rel="stylesheet">
         <link href="{{ assets('css/app.css') }}" rel="stylesheet" media="screen">
     </head>
-    <body>
-        <div class="container mx-auto site-header flex {% if not active('homepage') %}border-b border-white{% endif %}">
+    <body class="page {% if not active('homepage') %}page-inner{% endif %}">
+        <div class="container mx-auto site-header flex">
             <nav role="navigation" aria-label="Speaker Information" class="flex items-center flex-1 info-navigation">
                 <a href="{{ url('speaker_package') }}" class="{% if active('speaker_package') %}active{% endif %}">Speaker Information</a>
                 <a href="{{ url('talk_ideas') }}" class="{% if active('talk_ideas') %}active{% endif %}">Talk Ideas</a>
