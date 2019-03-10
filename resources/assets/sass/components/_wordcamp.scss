@@ -1,7 +1,24 @@
 body {
+  background-color: $off-white;
   font-family: $body;
   font-size: 18px;
   line-height: 1.555555;
+  padding-bottom: 90px;
+}
+
+h1, h2, h3 {
+  font-family: $header;
+}
+
+a {
+  color: $blue;
+  font-weight: 600;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $cardinal;
+  }
 }
 
 .site-header {
@@ -11,11 +28,17 @@ body {
     color: $cardinal;
     font-weight: bold;
     text-decoration: none;
+    border-bottom: 2px solid transparent;
 
     &:hover,
     &:active,
     &:focus {
-      text-decoration: underline;
+      color: $blue;
+      border-color: currentColor;
+    }
+    
+    &.active {
+      border-color: currentColor;
     }
     
     & + a {
@@ -35,6 +58,32 @@ body {
 
   .account-navigation {
     justify-content: flex-end;
+  }
+}
+
+.hero {
+  padding: 90px 0 0;
+  margin-bottom: 90px;
+  background-size: cover;
+  background-position: center;
+
+  .hero__text-box {
+    padding: 30px;
+    margin-bottom: 90px;
+    background: $blue;
+    color: white;
+    font-size: 16px;
+  }
+  
+  .btn-white {
+    color: $blue;
+  }
+  
+  .hero__information {
+    padding: 30px 0;
+    color: $white;
+    border-top: 3px dotted $white;
+    background: linear-gradient( rgba(0,0,0,0), rgba(0,0,0,1) 75%);
   }
 }
 
