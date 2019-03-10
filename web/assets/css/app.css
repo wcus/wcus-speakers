@@ -1528,8 +1528,9 @@ input[type="password"] {
   width: 167px;
   height: 181px;
   text-decoration: none;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: center;
+  border-bottom: none !important;
 }
 
 .site-header .account-navigation {
