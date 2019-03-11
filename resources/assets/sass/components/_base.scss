@@ -89,14 +89,56 @@ input[type="text"], input[type="email"], input[type="password"] {
     justify-content: flex-end;
   }
 
+  .info-navigation,
+  .account-navigation {
+    @media #{$tablet-portrait-down} {
+      display: block;
+      padding: 30px;
+      text-align: center;
+
+      a {
+        display: block;
+        margin: 0 0 1em;
+      }
+    }
+  }
+
   .page-inner:not(.page-dashboard) & {
     border-bottom: 3px dotted $light-brown;
     margin-bottom: 90px;
+  }
+  
+  @media screen and (max-width: 550px) {
+    flex-wrap: wrap;
+
+    .site-title {
+      min-width: 100%;
+    }
+
+    .info-navigation,
+    .account-navigation {
+      order: 2;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .info-navigation,
+    .account-navigation {
+      min-width: 100%;
+    }
+    .info-navigation {
+      padding-bottom: 0;
+    }
+    .account-navigation {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
 }
 
 .page-content {
   margin: 0 auto;
+  padding: 0 30px;
   max-width: 870px;
   
   .page-title {

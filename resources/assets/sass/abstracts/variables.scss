@@ -2,7 +2,8 @@
  * Breakpoint variables
  */
 $phone-only: "screen and (max-width: 599px)";
-$tablet-portrait-up: "screen and (min-width: 600px)";
+$tablet-portrait-down: "screen and (max-width: 781px)";
+$tablet-portrait-up: "screen and (min-width: 782px)";
 $tablet-landscape-down: "screen and (max-width: 899px)";
 $tablet-landscape-up: "screen and (min-width: 900px)";
 $desktop-up: "screen and (min-width: 1200px)";

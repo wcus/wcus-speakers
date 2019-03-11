@@ -1539,13 +1539,63 @@ input[type="password"] {
           justify-content: flex-end;
 }
 
+@media screen and (max-width: 781px) {
+  .site-header .info-navigation,
+  .site-header .account-navigation {
+    display: block;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .site-header .info-navigation a,
+  .site-header .account-navigation a {
+    display: block;
+    margin: 0 0 1em;
+  }
+}
+
 .page-inner:not(.page-dashboard) .site-header {
   border-bottom: 3px dotted #9e8b7e;
   margin-bottom: 90px;
 }
 
+@media screen and (max-width: 550px) {
+  .site-header {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .site-header .site-title {
+    min-width: 100%;
+  }
+
+  .site-header .info-navigation,
+  .site-header .account-navigation {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .site-header .info-navigation,
+  .site-header .account-navigation {
+    min-width: 100%;
+  }
+
+  .site-header .info-navigation {
+    padding-bottom: 0;
+  }
+
+  .site-header .account-navigation {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
 .page-content {
   margin: 0 auto;
+  padding: 0 30px;
   max-width: 870px;
 }
 
@@ -1613,6 +1663,54 @@ input[type="password"] {
   border-top: 3px dotted #fff;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(75%, black));
   background: linear-gradient(rgba(0, 0, 0, 0), black 75%);
+}
+
+.hero .hero__information .btn {
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 827px) {
+  .hero .hero__information {
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 781px) {
+  .hero .hero__information .flex {
+    display: block;
+  }
+
+  .hero .hero__information .btn {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero {
+    padding: 0;
+    background-image: none !important;
+  }
+
+  .hero .hero__text-box {
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .hero .hero__information {
+    border: none;
+    background: #303030;
+  }
+}
+
+@media screen and (max-width: 781px) {
+  .homepage-grid__columns {
+    display: block;
+  }
+
+  .homepage-grid__item {
+    width: 100%;
+    margin-bottom: 2em;
+  }
 }
 
 .account-banner {
