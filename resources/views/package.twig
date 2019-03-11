@@ -1,7 +1,7 @@
 {% extends "layouts/default.twig" %}
 {% block content %}
-<div class="container">
-    <h2>{{ site.title }} Speaker Information</h2>
+<div class="page-content">
+    <h2 class="page-title">{{ site.title }} Speaker Information</h2>
     <p>
         Your participation in WordCamp US as a speaker is a volunteer contribution to the
         WordPress community. Thank you for being willing to share your wealth of knowledge
@@ -11,14 +11,12 @@
         We’re committed to showcasing the best WordPress talks from around the world.
     </p>
     <h3>Benefits of Speaking at WordCamp US 2019</h3>
-    <p>
-        <ul>
-            <li>A ticket to WordCamp US</li>
-            <li> The opportunity to be heard by a broad audience, in person and on our livestream. </li>
-            <li>The warm fuzzy feeling that comes from giving back to your community.</li>
-            <li>An invitation to our Volunteer celebration.</li>
-        </ul>
-    </p>
+    <ul>
+        <li>A ticket to WordCamp US</li>
+        <li> The opportunity to be heard by a broad audience, in person and on our livestream. </li>
+        <li>The warm fuzzy feeling that comes from giving back to your community.</li>
+        <li>An invitation to our Volunteer celebration.</li>
+    </ul>
     <h3>Selection Process</h3>
     <p>
         The call for speakers closes {{ site.enddate | date("l, F j, Y") }} at 11:59pm CDT (-5 GMT). Once the deadline has
@@ -44,10 +42,6 @@
             </li>
         </ul>
     </p>
-    {% if user is not defined %}
-    <br /><br />
-    <h3><strong><a href="{{ url('login') }}" title="Login or Register">Login or
-                register</a></strong> to submit your talk!</h3>
-    {% endif %}
+    {% include "_call-submit.twig" %}
 </div>
 {% endblock %}

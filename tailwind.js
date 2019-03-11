@@ -128,7 +128,7 @@ var colors = {
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
 
-  'brand': '#e04c3e',
+  'brand': '#BD2B2E',
 }
 
 module.exports = {
@@ -334,7 +334,7 @@ module.exports = {
   */
 
   textColors: Object.assign({
-    'soft': colors['grey'],
+    'soft': '#9E8B7E',
     'dark': colors['grey-darkest'],
     'brand': colors['brand'],
   }, colors),

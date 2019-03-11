@@ -1,0 +1,25 @@
+/**
+ * Breakpoint variables
+ */
+$phone-only: "screen and (max-width: 599px)";
+$tablet-portrait-down: "screen and (max-width: 781px)";
+$tablet-portrait-up: "screen and (min-width: 782px)";
+$tablet-landscape-down: "screen and (max-width: 899px)";
+$tablet-landscape-up: "screen and (min-width: 900px)";
+$desktop-up: "screen and (min-width: 1200px)";
+
+/**
+ * Color Variables
+ */
+$textmain: #2f2f2f;
+$white: #ffffff;
+$off-white: #FFFFFA;
+$cardinal: #BD2B2E;
+$blue: #003B63;
+$bright-blue: #003988;
+$black: #303030;
+
+$light-brown: #9E8B7E;
+
+$header: 'Nunito', sans-serif;
+$body: 'Nunito Sans', sans-serif;

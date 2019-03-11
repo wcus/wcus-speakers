@@ -1,9 +1,9 @@
 {% extends "layouts/default.twig" %}
 
 {% block header %}
-    <header id="hero" class="bg-cover p-24" style="background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{ site.venue_image_path }}) no-repeat center -300px / cover fixed;">
+    <div class="hero" style="background-image:url('{{ assets('img/cta-background.png') }}')">
         <div class="container mx-auto flex">
-            <div class="p-8 bg-brand text-white">
+            <div class="hero__text-box">
                 {% if cfp_open %}
                     <h1>Call For Submissions Now Open!</h1>
                     <p>Submissions accepted until {{ site.enddate | date(site.date_format) }}</p>
@@ -19,21 +19,20 @@
                 {% endif %}
 
                 <div class="mt-8">
-                    {% if cfp_open %}<a href="{{ url('user_new') }}" class="btn btn-white-o">Register Now</a>{% endif %}
+                    {% if cfp_open %}<a href="{{ url('user_new') }}" class="btn btn-white">Register Now</a>{% endif %}
                 </div>
             </div>
-
         </div>
-    </header>
 
-    <div class="container mx-auto">
-        <div class="flex justify-between items-center px-4 py-6 wcus-full-width-mobile">
-            {% if site.event_location is defined and site.date_format is defined %}
-                <p class="margin-right">{{ site.title }} is from <span class="text-bold">{{ site.arrival|date(site.date_format, false) }}</span> to <span class="text-bold">{{ site.departure|date(site.date_format, false) }}</span> in {{ site.event_location }}</p>
-            {%  else %}
-                <p class="margin-right">For More Information About WordCamp US</p>
-            {% endif %}
-            <a href="{{ site.eventurl }}" class="btn btn-brand-o">Visit WordCamp US</a>
+        <div class="hero__information">
+            <div class="container mx-auto flex justify-between items-center">
+                {% if site.event_location is defined and site.date_format is defined %}
+                    <p>{{ site.title }} is from <span class="text-bold">{{ site.arrival|date(site.date_format, false) }}</span> to <span class="text-bold">{{ site.departure|date(site.date_format, false) }}</span> in {{ site.event_location }}</p>
+                {%  else %}
+                    <p>For More Information About WordCamp US</p>
+                {% endif %}
+                <a href="{{ site.eventurl }}" class="btn btn-white-o">Visit WordCamp US</a>
+            </div>
         </div>
     </div>
 {% endblock %}

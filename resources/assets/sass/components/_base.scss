@@ -1,0 +1,147 @@
+body {
+  background-color: $off-white;
+  font-family: $body;
+  font-size: 18px;
+  line-height: 1.555555;
+  padding-bottom: 90px;
+}
+
+h1, h2, h3 {
+  font-family: $header;
+}
+
+h2 {
+  color: $bright-blue;
+  font-size: 32px;
+}
+
+h3 {
+  margin: 30px 0 20px;
+  color: $bright-blue;
+  font-size: 24px;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+ul {
+  margin-bottom: 1em;
+}
+
+a {
+  color: $blue;
+  font-weight: 600;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $cardinal;
+  }
+}
+
+label {
+  color: $black;
+  font-size: 18px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  margin-bottom: 1em;
+}
+
+.site-header {
+  padding: 30px 0;
+
+  a {
+    color: $cardinal;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $blue;
+      border-color: currentColor;
+    }
+    
+    &.active {
+      border-color: currentColor;
+    }
+    
+    & + a {
+      margin-left: 2em;
+    }
+  }
+
+  .site-title a {
+    margin:  auto;
+    display: block;
+    width: 167px;
+    height: 181px;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-bottom: none !important;
+  }
+
+  .account-navigation {
+    justify-content: flex-end;
+  }
+
+  .info-navigation,
+  .account-navigation {
+    @media #{$tablet-portrait-down} {
+      display: block;
+      padding: 30px;
+      text-align: center;
+
+      a {
+        display: block;
+        margin: 0 0 1em;
+      }
+    }
+  }
+
+  .page-inner:not(.page-dashboard) & {
+    border-bottom: 3px dotted $light-brown;
+    margin-bottom: 90px;
+  }
+  
+  @media screen and (max-width: 550px) {
+    flex-wrap: wrap;
+
+    .site-title {
+      min-width: 100%;
+    }
+
+    .info-navigation,
+    .account-navigation {
+      order: 2;
+      padding-bottom: 0;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .info-navigation,
+    .account-navigation {
+      min-width: 100%;
+    }
+    .account-navigation {
+      padding-top: 0;
+    }
+  }
+}
+
+.page-content {
+  margin: 0 auto;
+  padding: 0 30px;
+  max-width: 870px;
+  
+  .page-title {
+    margin: 0 0 40px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: $black;
+  }
+}
