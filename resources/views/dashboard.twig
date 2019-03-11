@@ -91,9 +91,10 @@ function deleteTalk(tid) {
                     <div class="w-5/6">
                         <h2><a href="{{ url('talk_view', { id: talk.id }) }}">{{ talk.title|raw }}</a></h2>
                         <p>{{ talk.description | truncate(200) }}</p>
+                        {% if talk.desired %}<p><em>This is your preferred submission.</em></p>{% endif %}
                         <div>
-                            <span class="bg-brand text-white text-xs rounded-full py-2 px-3 mr-2"><i class="fa fa-clock-o"></i> {{ talkHelper.getTypeDisplayName(talk.type) }}</span>
-                            <span class="bg-brand text-white text-xs rounded-full py-2 px-3"><i class="fa fa-graduation-cap"></i> {{ talkHelper.getCategoryDisplayName(talk.category) }}</span>
+                            <span class="bg-brand text-white text-xs rounded-full py-2 px-3 mr-2"><i class="fa fa-clock-o" aria-hidden></i> {{ talkHelper.getTypeDisplayName(talk.type) }}</span>
+                            <span class="bg-brand text-white text-xs rounded-full py-2 px-3"><i class="fa fa-graduation-cap" aria-hidden></i> {{ talkHelper.getCategoryDisplayName(talk.category) }}</span>
                         </div>
                     </div>
                     <div>
