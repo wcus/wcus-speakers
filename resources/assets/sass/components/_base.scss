@@ -118,6 +118,7 @@ input[type="text"], input[type="email"], input[type="password"] {
     .info-navigation,
     .account-navigation {
       order: 2;
+      padding-bottom: 0;
     }
   }
 
@@ -126,12 +127,8 @@ input[type="text"], input[type="email"], input[type="password"] {
     .account-navigation {
       min-width: 100%;
     }
-    .info-navigation {
-      padding-bottom: 0;
-    }
     .account-navigation {
       padding-top: 0;
-      padding-bottom: 0;
     }
   }
 }

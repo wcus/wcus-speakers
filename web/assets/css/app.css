@@ -1574,6 +1574,7 @@ input[type="password"] {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
+    padding-bottom: 0;
   }
 }
 
@@ -1583,13 +1584,8 @@ input[type="password"] {
     min-width: 100%;
   }
 
-  .site-header .info-navigation {
-    padding-bottom: 0;
-  }
-
   .site-header .account-navigation {
     padding-top: 0;
-    padding-bottom: 0;
   }
 }
 
@@ -1737,4 +1733,39 @@ input[type="password"] {
 .account-banner .btn:active,
 .account-banner .btn:focus {
   color: #003b63;
+}
+
+@media screen and (max-width: 960px) {
+  .account-banner {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .account-banner .account-banner__actions {
+    margin-top: 1em;
+    width: 100%;
+    text-align: left;
+  }
+
+  .account-banner .account-banner__actions p {
+    margin-bottom: 0;
+  }
+
+  .account-banner .account-banner__actions .btn {
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .talk-list__item {
+    display: block;
+  }
+
+  .talk-list__item > div {
+    width: 100%;
+  }
+
+  .talk-list__item div + div {
+    margin-top: 1.5em;
+  }
 }

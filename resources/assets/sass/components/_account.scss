@@ -26,4 +26,36 @@
       color: $blue;
     }
   }
+  
+  @media screen and (max-width: 960px) {
+    flex-wrap: wrap;
+
+    .account-banner__actions {
+      margin-top: 1em;
+      width: 100%;
+      text-align: left;
+      
+      p {
+        margin-bottom: 0;
+      }
+
+      .btn {
+        margin-bottom: 1em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .talk-list__item {
+    display: block;
+
+    & > div {
+      width: 100%;
+    }
+    
+    div + div {
+      margin-top: 1.5em;
+    }
+  }
 }

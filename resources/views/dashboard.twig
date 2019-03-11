@@ -83,11 +83,11 @@ function deleteTalk(tid) {
         </div>
     </div>
 
-    <div class="w-5/6 mx-auto mt-8">
+    <div class="w-5/6 mx-auto mt-8 talk-list">
         <p class="mb-8">Submit a maximum of 2 submissions ...</p>
         {% if profile.talks is not empty %}
             {% for talk in profile.talks %}
-                <div id="talk-{{ talk.id }}" class="flex items-center justify-between mb-8">
+                <div id="talk-{{ talk.id }}" class="flex items-center justify-between mb-8 talk-list__item">
                     <div class="w-5/6">
                         <h2><a href="{{ url('talk_view', { id: talk.id }) }}">{{ talk.title|raw }}</a></h2>
                         <p>{{ talk.description | truncate(200) }}</p>
