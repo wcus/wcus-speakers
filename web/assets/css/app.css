@@ -1004,10 +1004,6 @@ button,
   color: #70818a;
 }
 
-.text-grey {
-  color: #9babb4;
-}
-
 .text-white {
   color: #fff;
 }
@@ -1672,6 +1668,10 @@ input[type="password"] {
 }
 
 @media screen and (max-width: 781px) {
+  .hero {
+    background-position: left center;
+  }
+
   .hero .hero__information .flex {
     display: block;
   }
