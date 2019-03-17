@@ -34,6 +34,8 @@
   }
   
   @media #{$tablet-portrait-down} {
+    background-position: left center;
+
     .hero__information {
       .flex {
         display: block;
