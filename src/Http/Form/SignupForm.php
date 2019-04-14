@@ -105,9 +105,9 @@ class SignupForm extends Form
             return false;
         }
 
-        // Check if uploaded file is greater than 5MB
-        if ($speakerPhoto->getClientSize() > (5 * 1048576)) {
-            $this->addErrorMessage('Speaker photo can not be larger than 5MB');
+        // Check if uploaded file is greater than 8MB
+        if ($speakerPhoto->getClientSize() > (8 * 1048576)) {
+            $this->addErrorMessage('Speaker photo can not be larger than 8MB');
 
             return false;
         }
