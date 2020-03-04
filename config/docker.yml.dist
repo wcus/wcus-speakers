@@ -1,20 +1,21 @@
 application:
-  title: OpenCFP
-  url: http://cfp.dev
+  title: WordCamp US 2019
+  url: http://opencfp.local
   email: contact@openconf.com
-  eventurl: http://myenvent.com
-  event_location: Miami, FL
-  enddate: Oct. 14th, 2100
+  eventurl: https://2020.us.wordcamp.org
+  event_location: St. Louis, MO
+  enddate: May 3rd, 2020
   show_submission_count: false
-  airport: MIA
-  arrival: 2018-10-26
-  departure: 2018-10-31
-  secure_ssl: true
+  airport: STL
+  arrival: 2020-10-27
+  departure: 2020-10-29
+  secure_ssl: false
   online_conference: false
-  date_format: d/m/Y
+  date_format: m/d/Y
   date_timezone: "UTC"
-  coc_link: http://confcodeofconduct.com/
-  venue_image_path: /assets/img/venue.jpg
+  coc_link: https://2020.us.wordcamp.org/code-of-conduct/
+  show_contrib_banner: false
+  venue_image_path: /assets/img/stlouis-mo.jpg
   user_image_size: 300
   anonymized_reviews: false
 
@@ -26,7 +27,7 @@ database:
   password: root
 
 log:
-  level: error
+  level: debug
 
 mail:
   host: ~
@@ -38,13 +39,7 @@ mail:
 
 talk:
   categories:
-    api: APIs (REST, SOAP, etc.)
-    continuousdelivery: Continuous Delivery
-    database: Database
-    development: Development
-    devops: Devops
-    framework: Framework
-    ibmi: IBMi
+    diversity: Diversity
     javascript: JavaScript
     business: Business
     mentalhealth: Mental Health
@@ -52,8 +47,18 @@ talk:
     contributing: Contributing
     accessibility: Accessibility
     security: Security
+    mobile: Mobile
     testing: Testing
-    uiux: UI/UX
+    versioncontrol: Version Control
+    translations: Translations
+    restapi: Rest API
+    devops: Devops
+    media: Media
+    projectmanagement: Project Management
+    workflows: Workflows
+    uiux: UI / UX
+    community: Community
+    opensource: Open Source
     other: Other
   levels:
     entry: Entry level
