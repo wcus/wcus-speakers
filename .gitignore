@@ -30,5 +30,3 @@ Homestead.yaml
 
 # WCUS Additions
 /web/.well-known
-templates copy/
-resources/config/config_production.yml
