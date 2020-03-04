@@ -27,3 +27,5 @@ infection-log.txt
 infection.json
 docker-compose.yml
 Homestead.yaml
+
+resources/config/config_production.yml
