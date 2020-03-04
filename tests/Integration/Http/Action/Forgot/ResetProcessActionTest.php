@@ -41,7 +41,7 @@ final class ResetProcessActionTest extends WebTestCase implements TransactionalT
         $response = $client->getResponse();
 
         $this->assertResponseStatusCode(HttpFoundation\Response::HTTP_OK, $response);
-        $this->assertResponseBodyContains('<h2 class="headline">Reset My Password</h2>', $response);
+        $this->assertResponseBodyContains('<h2 class="page-title">Reset My Password</h2>', $response);
         $this->assertResponseBodyContains('<button type="submit" class="btn btn-success" >Change my password</button>', $response);
     }
 }

@@ -25,6 +25,6 @@ final class UpdatePasswordActionTest extends WebTestCase
         $response = $this->post('/updatepassword');
 
         $this->assertResponseIsSuccessful($response);
-        $this->assertResponseBodyContains('<h2 class="headline">Reset My Password</h2>', $response);
+        $this->assertResponseBodyContains('<h2 class="page-title">Reset My Password</h2>', $response);
     }
 }
