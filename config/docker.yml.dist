@@ -1,10 +1,10 @@
 application:
-  title: WordCamp US 2019
+  title: WordCamp US 2020
   url: http://opencfp.local
   email: contact@openconf.com
   eventurl: https://2020.us.wordcamp.org
   event_location: St. Louis, MO
-  enddate: May 3rd, 2020
+  enddate: 2020-04-15T04:59Z
   show_submission_count: false
   airport: STL
   arrival: 2020-10-27
@@ -12,11 +12,13 @@ application:
   secure_ssl: false
   online_conference: false
   date_format: m/d/Y
-  date_timezone: "UTC"
+  date_timezone: "America/Chicago"
   coc_link: https://2020.us.wordcamp.org/code-of-conduct/
-  show_contrib_banner: false
+  av_release: https://2020.us.wordcamp.org/files/2020/03/AV-Agreement-WCUS-2020.pdf
+  talk_anon: false
   venue_image_path: /assets/img/stlouis-mo.jpg
   user_image_size: 300
+  max_entries: 3
   anonymized_reviews: false
 
 database:
