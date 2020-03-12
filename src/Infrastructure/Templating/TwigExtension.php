@@ -66,6 +66,15 @@ class TwigExtension extends AbstractExtension
                 return $this->urlGenerator->generate($route)
                     === $this->requestStack->getCurrentRequest()->getRequestUri();
             }),
+
+            new TwigFunction('avatar', function ( string $email, $size = 600) {
+                $email_hash = md5( strtolower( trim( $email ) ) );
+                return sprintf(
+                  'https://secure.gravatar.com/avatar/%1$s/?d=404&r=g&s=%2$d',
+                  $email_hash,
+                  $size
+                );
+            }),
         ];
     }
 }

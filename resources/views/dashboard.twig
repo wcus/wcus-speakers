@@ -38,11 +38,7 @@ function deleteTalk(tid) {
     {% else %}
     <div class="account-banner flex items-center justify-between">
         <div class="mr-6">
-            {% if profile.photo is not empty %}
-                <img src="{{ thumbnail(profile.photo) }}" onerror="this.onerror=null;this.src='{{ uploads(profile.photo) }}';" class="rounded-full border-4 border-white w-32"/>
-            {% else %}
-                <img src="{{ assets('img/dummyphoto.jpg') }}" class="rounded-full border-4 border-white w-32"/>
-            {% endif %}
+            <img src="{{ avatar(profile.email) }}" class="rounded-full border-4 border-white w-32" />
         </div>
         <div class="flex-1">
             <h2 class="m-0">{{ profile.name }}</h2>

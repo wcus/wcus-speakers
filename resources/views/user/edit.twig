@@ -3,21 +3,28 @@
 {% block scripts %}
     {{ parent() }}
     <script type="text/javascript">
-        var input = document.getElementById('form-user-photo')
-        var label = input.previousElementSibling
-        var originalLabelValue = label.innerHTML
-
-        input.addEventListener('change', function (e) {
-            if (this.files) {
-                fileName = e.target.value.split('\\').pop()
+        function initPhotoListener() {
+            var input = document.getElementById('form-user-photo')
+            if ( ! input ) {
+                return
             }
+            var label = input.previousElementSibling
+            var originalLabelValue = label.innerHTML
 
-            if (fileName) {
-                label.querySelector('span').innerHTML = fileName
-            } else {
-                label.innerHTML = originalLabelValue
-            }
-        })
+            input.addEventListener('change', function (e) {
+                if (this.files) {
+                    fileName = e.target.value.split('\\').pop()
+                }
+
+                if (fileName) {
+                    label.querySelector('span').innerHTML = fileName
+                } else {
+                    label.innerHTML = originalLabelValue
+                }
+            })
+        }
+
+        initPhotoListener();
     </script>
 {% endblock %}
 
