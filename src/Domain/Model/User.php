@@ -58,6 +58,11 @@ class User extends Eloquent
         return $this->hasMany(Throttle::class);
     }
 
+    public static function wporgUrl(?string $handle): string
+    {
+        return !$handle || !\trim($handle) ? '' : ('https://profiles.wordpress.org/' . $handle);
+    }
+
     public static function twitterUrl(?string $handle): string
     {
         return !$handle || !\trim($handle) ? '' : ('https://twitter.com/' . $handle);

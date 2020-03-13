@@ -29,9 +29,11 @@ class SignupForm extends Form
         'first_name',
         'last_name',
         'company',
+        'wporg',
         'twitter',
         'speaker_info',
         'speaker_bio',
+        'speaker_exp',
         'transportation',
         'hotel',
         'speaker_photo',
@@ -62,6 +64,12 @@ class SignupForm extends Form
 
         if (!empty($this->taintedData['speaker_bio'])) {
             $validSpeakerBio = $this->validateSpeakerBio();
+        }
+
+        $validSpeakerExp = true;
+
+        if (!empty($this->taintedData['speaker_exp'])) {
+            $validSpeakerExp = $this->validateSpeakerExp();
         }
 
         return $this->validateEmail() && $validPasswords && $this->validateFirstName() && $this->validateLastName() && $this->validateUrl() && $validSpeakerInfo && $validSpeakerBio && $this->validateSpeakerPhoto() && $agreeCoc && $this->validateJoindInUsername() && $this->validateTransportationRequests();
@@ -282,6 +290,24 @@ class SignupForm extends Form
         return $validationResponse;
     }
 
+    public function validateSpeakerExp(): bool
+    {
+        $speakerExp = \filter_var(
+            $this->cleanData['speaker_exp'],
+            FILTER_SANITIZE_STRING
+        );
+        $validationResponse = true;
+        $speakerExp         = \strip_tags($speakerExp);
+        $speakerExp         = $this->purifier->purify($speakerExp);
+
+        if (empty($speakerExp)) {
+            $this->addErrorMessage('You submitted speaker experience information but it was empty after sanitizing');
+            $validationResponse = false;
+        }
+
+        return $validationResponse;
+    }
+
     public function sanitize()
     {
         parent::sanitize();
@@ -293,6 +319,15 @@ class SignupForm extends Form
 
         if (isset($this->taintedData['password2'])) {
             $this->cleanData['password2'] = $this->taintedData['password2'];
+        }
+
+        // Remove leading @ for wporg profile name
+        if (isset($this->taintedData['wporg'])) {
+            $this->cleanData['wporg'] = \preg_replace(
+                '/^@/',
+                '',
+                $this->taintedData['wporg']
+            );
         }
 
         // Remove leading @ for twitter

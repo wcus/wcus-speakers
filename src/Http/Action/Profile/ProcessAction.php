@@ -131,6 +131,7 @@ final class ProcessAction
             'first_name'       => $request->request->get('first_name'),
             'last_name'        => $request->request->get('last_name'),
             'company'          => $request->request->get('company'),
+            'wporg'            => $request->request->get('wporg'),
             'twitter'          => $request->request->get('twitter'),
             'joindin_username' => $request->request->get('joindin_username'),
             'url'              => $request->request->get('url'),
@@ -139,6 +140,7 @@ final class ProcessAction
             'hotel'            => $request->request->getInt('hotel'),
             'speaker_info'     => $request->request->get('speaker_info') ?: null,
             'speaker_bio'      => $request->request->get('speaker_bio') ?: null,
+            'speaker_exp'      => $request->request->get('speaker_exp') ?: null,
         ];
     }
 
@@ -151,6 +153,12 @@ final class ProcessAction
      */
     private function transformSanitizedData(array $sanitizedData): array
     {
+        $sanitizedData['wporg'] = \preg_replace(
+            '/^@/',
+            '',
+            $sanitizedData['wporg']
+        );
+
         $sanitizedData['twitter'] = \preg_replace(
             '/^@/',
             '',
@@ -158,12 +166,14 @@ final class ProcessAction
         );
 
         $sanitizedData['bio']              = $sanitizedData['speaker_bio'];
+        $sanitizedData['exp']              = $sanitizedData['speaker_exp'];
         $sanitizedData['info']             = $sanitizedData['speaker_info'];
         $sanitizedData['id']               = $sanitizedData['user_id'];
         $sanitizedData['has_made_profile'] = 1;
 
         unset(
             $sanitizedData['speaker_bio'],
+            $sanitizedData['speaker_exp'],
             $sanitizedData['speaker_info'],
             $sanitizedData['user_id']
         );

@@ -115,6 +115,30 @@ class SpeakerProfile
      *
      * @return null|string
      */
+    public function getWPorg()
+    {
+        $this->assertAllowedToSee('wporg');
+
+        return $this->speaker->wporg;
+    }
+
+    /**
+     * @throws NotAllowedException
+     *
+     * @return string
+     */
+    public function getWPorgUrl(): string
+    {
+        $this->assertAllowedToSee('wporg');
+
+        return User::wporgUrl($this->speaker->wporg);
+    }
+
+    /**
+     * @throws NotAllowedException
+     *
+     * @return null|string
+     */
     public function getTwitter()
     {
         $this->assertAllowedToSee('twitter');
@@ -198,6 +222,18 @@ class SpeakerProfile
         $this->assertAllowedToSee('bio');
 
         return $this->speaker->bio;
+    }
+
+    /**
+     * @throws NotAllowedException
+     *
+     * @return null|string
+     */
+    public function getExp()
+    {
+        $this->assertAllowedToSee('exp');
+
+        return $this->speaker->exp;
     }
 
     /**

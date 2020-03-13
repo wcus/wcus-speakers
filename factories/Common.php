@@ -21,12 +21,14 @@ $factory->define(\OpenCFP\Domain\Model\User::class, function (\Faker\Generator $
         'company'          => $faker->company,
         'twitter'          => '@' . $faker->userName,
         'joindin_username' => $faker->userName,
+        'wporg_username'   => $faker->userName,
         'activated_at'     => $faker->dateTimeInInterval('-2 months', '-1 months'),
         'last_login'       => $faker->dateTimeInInterval('-5 days', 'now'),
         'transportation'   => $faker->randomElement([0, 1]),
         'hotel'            => $faker->randomElement([0, 1]),
         'info'             => $faker->realText(),
         'bio'              => $faker->realText(),
+        'exp'              => $faker->realText(),
     ];
 });
 

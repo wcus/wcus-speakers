@@ -47,6 +47,11 @@ function deleteTalk(tid) {
             {% endif %}
 
             <div class="account-banner__links">
+            {% if profile.wporg %}
+                <a class="text-xs" href="https://profiles.wordpress.org/{{ profile.wporg }}">
+                    <i class="fa fa-fw fa-wordpress" aria-hidden></i> {{ profile.wporg }}
+                </a><br />
+            {% endif %}
             {% if profile.twitter %}
                 <a class="text-xs" href="https://twitter.com/{{ profile.twitter }}">
                     <i class="fa fa-fw fa-twitter" aria-hidden></i> @{{ profile.twitter }}
