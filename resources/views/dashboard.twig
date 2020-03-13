@@ -96,6 +96,9 @@ function deleteTalk(tid) {
                         <div>
                             <span class="bg-brand text-white text-xs rounded-full py-2 px-3 mr-2"><i class="fa fa-clock-o" aria-hidden></i> {{ talkHelper.getTypeDisplayName(talk.type) }}</span>
                             <span class="bg-brand text-white text-xs rounded-full py-2 px-3"><i class="fa fa-graduation-cap" aria-hidden></i> {{ talkHelper.getCategoryDisplayName(talk.category) }}</span>
+                            {% if talk.level == "advanced" %}
+                                <span class="bg-brand text-white text-xs rounded-full py-2 px-3"><i class="fa fa-level-up" aria-hidden></i> {{ talkHelper.getLevelDisplayName(talk.level) }}</span>
+                            {% endif %}
                         </div>
                     </div>
                     <div>

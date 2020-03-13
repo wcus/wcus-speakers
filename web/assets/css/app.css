@@ -1585,13 +1585,24 @@ input[type=password] {
 }
 
 .account-banner .account-banner__links a {
+  margin-bottom: 5px;
   color: #fff;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .account-banner .account-banner__links a:hover,
 .account-banner .account-banner__links a:active,
 .account-banner .account-banner__links a:focus {
   color: #fff;
+}
+
+.account-banner .fa {
+  width: 36px;
+  font-size: 24px;
+  text-align: left;
 }
 
 .account-banner .btn:hover,
@@ -1632,6 +1643,11 @@ input[type=password] {
   .talk-list__item div + div {
     margin-top: 1.5em;
   }
+}
+
+input[type=checkbox] {
+  position: relative;
+  bottom: 2px;
 }
 
 textarea {

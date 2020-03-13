@@ -9,7 +9,10 @@
 
   .account-banner__links {
     a {
+      margin-bottom: 5px;
       color: $white;
+      display: inline-flex;
+      align-items: center;
 
       &:hover,
       &:active,
@@ -18,7 +21,13 @@
       }
     }
   }
-  
+
+  .fa {
+    width: 36px;
+    font-size: 24px;
+    text-align: left;
+  }
+
   .btn { 
     &:hover,
     &:active,

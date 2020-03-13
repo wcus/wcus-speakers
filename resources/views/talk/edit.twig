@@ -1,4 +1,28 @@
 {% extends "layouts/default.twig" %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        function initLevelListener() {
+            var input = document.getElementById('form-talk-level-advanced')
+            if ( ! input ) {
+                return
+            }
+            var defaultInput = input.previousElementSibling
+
+            input.addEventListener('click', function (event) {
+                if ( event.target.checked ) {
+                    defaultInput.checked = false;
+                } else {
+                    defaultInput.checked = true;
+                }
+            })
+        }
+
+        initLevelListener();
+    </script>
+{% endblock %}
+
 {% block content %}
 <div class="page-content">
     <h2 class="page-title">Edit Your Talk</h2>
