@@ -86,6 +86,11 @@ class TalkProfile
         return $this->talk->slides;
     }
 
+    public function isPrerecorded(): bool
+    {
+        return $this->talk->prerecorded == 1;
+    }
+
     public function isDesired(): bool
     {
         return $this->talk->desired == 1;

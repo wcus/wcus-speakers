@@ -1057,6 +1057,10 @@ table {
   content: "\F017";
 }
 
+.fa-video-camera:before {
+  content: "\F03D";
+}
+
 .fa-plane:before {
   content: "\F072";
 }
@@ -1091,6 +1095,10 @@ table {
 
 .fa-desktop:before {
   content: "\F108";
+}
+
+.fa-level-up:before {
+  content: "\F148";
 }
 
 .fa-check-square:before {

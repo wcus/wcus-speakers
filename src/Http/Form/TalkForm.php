@@ -25,6 +25,7 @@ class TalkForm extends Form
         'type',
         'level',
         'category',
+        'prerecorded',
         'desired',
         'slides',
         'other',
@@ -34,6 +35,10 @@ class TalkForm extends Form
 
     public function __construct(array $data, \HTMLPurifier $purifier, array $options = [])
     {
+        if (!\array_key_exists('prerecorded', $data) || $data['prerecorded'] === null) {
+            $data['prerecorded'] = 0;
+        }
+
         if (!\array_key_exists('desired', $data) || $data['desired'] === null) {
             $data['desired'] = 0;
         }

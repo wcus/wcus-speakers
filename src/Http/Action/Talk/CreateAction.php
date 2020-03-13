@@ -77,6 +77,7 @@ final class CreateAction
             'type'           => $request->request->get('type'),
             'level'          => $request->request->get('level'),
             'category'       => $request->request->get('category'),
+            'prerecorded'    => $request->request->get('prerecorded'),
             'desired'        => $request->request->get('desired'),
             'slides'         => $request->request->get('slides'),
             'other'          => $request->request->get('other'),

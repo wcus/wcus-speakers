@@ -44,6 +44,11 @@
     </p>
 
     <p>
+        <input id="form-prerecorded" name="prerecorded" type="checkbox" value="1" {% if prerecorded == '1' %}checked{% endif %}>
+        <label for="form-prerecorded">This talk would be deliverable via video – either live or prerecorded.</label>
+    </p>
+
+    <p>
         <input id="form-desired" name="desired" type="checkbox" value="1" {% if desired == '1' %}checked{% endif %}>
         <label for="form-desired">Of your {{ site.max_entries }} maximum submissions, is this one your best?</label>
     </p>

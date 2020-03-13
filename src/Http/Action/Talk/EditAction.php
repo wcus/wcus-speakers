@@ -103,6 +103,7 @@ final class EditAction
             'type'           => $talk['type'],
             'level'          => $talk['level'],
             'category'       => $talk['category'],
+            'prerecorded'    => $talk['prerecorded'],
             'desired'        => $talk['desired'],
             'slides'         => $talk['slides'],
             'other'          => $talk['other'],
