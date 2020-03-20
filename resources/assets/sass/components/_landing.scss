@@ -22,6 +22,10 @@
     background: $blue;
     color: white;
     font-size: 16px;
+
+    @media #{$tablet-portrait-down} {
+      flex-grow: 1;
+    }
   }
   
   .btn-white {
@@ -37,8 +41,10 @@
       padding: 0;
     }
 
-    p {
-      margin: 0;
+    @media #{$tablet-portrait-up} {
+      p {
+        margin: 0;
+      }
     }
 
     .btn {
