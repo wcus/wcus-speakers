@@ -56,8 +56,13 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 .site-header {
   max-width: 1240px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  .page-innerpage-dashboard & {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
 
   a {
     color: $cardinal;
@@ -108,11 +113,6 @@ input[type="text"], input[type="email"], input[type="password"] {
       }
     }
   }
-
-  .page-inner:not(.page-dashboard) & {
-    border-bottom: 3px dotted $light-brown;
-    margin-bottom: 90px;
-  }
   
   @media screen and (max-width: 550px) {
     flex-wrap: wrap;
@@ -153,5 +153,12 @@ input[type="text"], input[type="email"], input[type="password"] {
     text-transform: uppercase;
     font-weight: 800;
     color: $black;
+  }
+}
+
+
+main {
+  .page-inner:not(.page-dashboard) & {
+    padding-top: 30px;
   }
 }
