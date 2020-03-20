@@ -156,9 +156,11 @@ input[type="text"], input[type="email"], input[type="password"] {
   }
 }
 
-
 main {
-  .page-inner:not(.page-dashboard) & {
+  .page:not(.page-inner):not(.page-innerpage-dashboard) & {
+    max-width: 1240px;
+  }
+  .page-inner:not(.page-innerpage-dashboard) & {
     padding-top: 30px;
   }
 }

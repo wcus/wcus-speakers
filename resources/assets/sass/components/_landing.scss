@@ -4,6 +4,18 @@
   background-size: cover;
   background-position: center;
 
+  @media (min-width: 1280px) {
+    max-width: 1340px;
+    margin: 0 auto 90px;
+    border-radius: 12px;
+    overflow: auto;
+  }
+
+  > .container {
+    max-width: 1240px;
+    padding-left: 0;
+  }
+
   .hero__text-box {
     padding: 30px;
     margin-bottom: 90px;
@@ -17,10 +29,17 @@
   }
   
   .hero__information {
-    padding: 30px;
     color: $white;
     border-top: 3px dotted $white;
     background: linear-gradient( rgba(0,0,0,0), rgba(0,0,0,1) 75%);
+
+    .container {
+      padding: 0;
+    }
+
+    p {
+      margin: 0;
+    }
 
     .btn {
       margin-left: 30px;
