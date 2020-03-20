@@ -55,6 +55,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 .site-header {
+  max-width: 1240px;
   padding-top: 30px;
   padding-bottom: 30px;
 
@@ -63,6 +64,8 @@ input[type="text"], input[type="email"], input[type="password"] {
     font-weight: bold;
     text-decoration: none;
     border-bottom: 2px solid transparent;
+    margin-left: 16px;
+    margin-right: 16px;
 
     &:hover,
     &:active,
@@ -73,10 +76,6 @@ input[type="text"], input[type="email"], input[type="password"] {
     
     &.active {
       border-color: currentColor;
-    }
-    
-    & + a {
-      margin-left: 2em;
     }
   }
 
@@ -138,6 +137,10 @@ input[type="text"], input[type="email"], input[type="password"] {
       padding-top: 0;
     }
   }
+}
+
+.info-navigation {
+  margin-left: -16px;
 }
 
 .page-content {
