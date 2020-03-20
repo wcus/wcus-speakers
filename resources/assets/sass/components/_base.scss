@@ -55,14 +55,22 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 .site-header {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  max-width: 1240px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  .page-innerpage-dashboard & {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
 
   a {
     color: $cardinal;
     font-weight: bold;
     text-decoration: none;
     border-bottom: 2px solid transparent;
+    margin-left: 16px;
+    margin-right: 16px;
 
     &:hover,
     &:active,
@@ -73,10 +81,6 @@ input[type="text"], input[type="email"], input[type="password"] {
     
     &.active {
       border-color: currentColor;
-    }
-    
-    & + a {
-      margin-left: 2em;
     }
   }
 
@@ -109,11 +113,6 @@ input[type="text"], input[type="email"], input[type="password"] {
       }
     }
   }
-
-  .page-inner:not(.page-dashboard) & {
-    border-bottom: 3px dotted $light-brown;
-    margin-bottom: 90px;
-  }
   
   @media screen and (max-width: 550px) {
     flex-wrap: wrap;
@@ -140,6 +139,10 @@ input[type="text"], input[type="email"], input[type="password"] {
   }
 }
 
+.info-navigation {
+  margin-left: -16px;
+}
+
 .page-content {
   margin: 0 auto;
   padding: 0 30px;
@@ -150,5 +153,14 @@ input[type="text"], input[type="email"], input[type="password"] {
     text-transform: uppercase;
     font-weight: 800;
     color: $black;
+  }
+}
+
+main {
+  .page:not(.page-inner):not(.page-innerpage-dashboard) & {
+    max-width: 1240px;
+  }
+  .page-inner:not(.page-innerpage-dashboard) & {
+    padding-top: 30px;
   }
 }
