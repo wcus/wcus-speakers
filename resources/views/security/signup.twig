@@ -1,28 +1,28 @@
 {% extends "layouts/splash.twig" %}
 {% block content %}
     <div class="opencfp-signup">
-        <a class="font-serif flex items-center justify-center mb-4" href="{{ url('homepage') }}">
-            <img class="w-10 mr-2" src="{{ assets('img/logo.svg') }}" alt="OpenCFP">
-            <h1 class="font-normal text-white m-0">Open<span class="text-brand font-bold">CFP</span></h1>
+        <a class="font-serif text-center mt-8 mb-4 block" href="{{ url('homepage') }}">
+            <img class="w-32 mb-2 inline-block" src="{{ assets('img/logo.svg') }}" alt="OpenCFP">
+            <h1 class="font-normal m-0">Open<span class="text-brand font-bold">CFP</span></h1>
         </a>
 
         {% include "_flash.twig" %}
 
         <form method="post" action="{{ url('user_create') }}">
-            <label class="text-white text-sm">Email</label>
+            <label>Email</label>
             <input type="email" name="email"
                    value="{% if flash.old_email %}{{ flash.old_email | escape }}{% endif %}"
                    placeholder="you@example.com">
-            <label class="text-white text-sm">Password</label>
+            <label class="text-sm">Password</label>
             <input type="password" name="password" placeholder="•••••••">
             <ul class="list-reset">
                 <li>
-                    <label for="coc" class="text-white">
+                    <label for="coc">
                         <input id="coc" class="mr-2" name="coc" type="checkbox"> I agree to abide by the <a href="{{ site.coc_link }}" target="_blank" class="text-brand text-bold text-underline" rel="noopener noreferrer">Code of Conduct</a>
                     </label>
                 </li>
                 <li>
-                    <label for="privacy" class="text-white">
+                    <label for="privacy">
                         <input id="privacy" class="mr-2" name="privacy" type="checkbox">
                         I have read and understand the <a href="{{ url('privacy') }}" target="_blank" class="text-brand text-bold text-underline" rel="noopener noreferrer">Privacy Policy</a>
                     </label>

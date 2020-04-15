@@ -145,7 +145,6 @@ div:empty {
 @responsive {
   .opencfp-login,
   .opencfp-signup {
-    @apply .text-white;
     @apply .w-1/6;
     min-width: 20rem;
   }
