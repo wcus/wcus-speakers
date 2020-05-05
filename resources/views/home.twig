@@ -27,7 +27,7 @@
         <div class="hero__information">
             <div class="container mx-auto flex justify-between items-center">
                 {% if site.event_location is defined and site.date_format is defined %}
-                    <p>{{ site.title }} is from <span class="text-bold">{{ site.arrival|date(site.date_format, false) }}</span> to <span class="text-bold">{{ site.departure|date(site.date_format, false) }}</span> in {{ site.event_location }}</p>
+                    <p>{{ site.title }} is from <span class="text-bold">{{ site.arrival|date(site.date_format, false) }}</span> to <span class="text-bold">{{ site.departure|date(site.date_format, false) }}</span> online.</p>
                 {%  else %}
                     <p>For More Information About WordCamp US</p>
                 {% endif %}
